@@ -8,7 +8,7 @@ import Footer from '@/components/layout/Footer';
 const inter = Inter({
 	subsets: ['latin'],
 	variable: '--font-geist-sans',
-	weight: ['400', '700'],
+	weight: ['400', '500', '700', '900'],
 });
 
 export const metadata: Metadata = {

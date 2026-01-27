@@ -11,8 +11,8 @@ type NavItem = {
 };
 
 const NAV: NavItem[] = [
-	{ label: 'Home', href: '/' },
 	{ label: 'Projects', href: '/projects' },
+	{ label: 'Resume', href: '/resume' },
 ];
 
 export default function Header() {
