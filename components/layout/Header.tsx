@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 import styles from './styles/header.module.css';
+import { CopyButton } from '@/components/ui/CopyButton/CopyButton';
 
 type NavItem = {
 	label: string;
@@ -26,14 +27,13 @@ export default function Header() {
 
 	return (
 		<header className={styles.header}>
-			<div className={styles.inner}>
-				<Link
-					className={styles.logo}
-					href='/'
-					aria-label='Go to homepage'>
-					<span>Badr Morsadi</span>
-				</Link>
-
+			<Link
+				className={styles.logo}
+				href='/'
+				aria-label='Go to homepage'>
+				<span>Badr Morsadi</span>
+			</Link>
+			<div className={styles.navigation}>
 				<nav
 					className={styles.nav}
 					aria-label='Primary navigation'>
@@ -48,6 +48,7 @@ export default function Header() {
 					))}
 				</nav>
 			</div>
+			<CopyButton caption='bmorsadi@gmail.com' />
 		</header>
 	);
 }
