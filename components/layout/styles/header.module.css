@@ -1,0 +1,35 @@
+.header {
+	z-index: 9999;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--background);
+	padding: 20px;
+	box-shadow: var(--shadow-elevation-low);
+
+	.navLink {
+		text-transform: uppercase;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		font-size: 1rem;
+	}
+	.navigation {
+		display: flex;
+		gap: 10px;
+	}
+	.headerRight {
+		display: flex;
+
+		justify-content: flex-end;
+		align-items: center;
+		width: 100%;
+		gap: 20px;
+	}
+
+	@media (min-width: 47.5em) {
+		.navLink {
+			font-size: 1.25rem;
+		}
+	}
+}
