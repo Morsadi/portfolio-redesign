@@ -1,54 +1,22 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useMemo } from 'react';
 import styles from './styles/header.module.css';
+import Logo from './logo';
+import Navigation from './navigation';
 import { CopyButton } from '@/components/ui/CopyButton/CopyButton';
-
-type NavItem = {
-	label: string;
-	href: string;
-};
-
-const NAV: NavItem[] = [
-	{ label: 'Projects', href: '/projects' },
-	{ label: 'Resume', href: '/resume' },
-];
+import { useHasMounted } from '@/hooks/useHasMounted';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export default function Header() {
-	const pathname = usePathname();
-
-	const activeHref = useMemo(() => {
-		if (!pathname) return '';
-		if (pathname.startsWith('/projects')) return '/projects';
-		return pathname;
-	}, [pathname]);
-
+	const mounted = useHasMounted();
+	const isMobile = useMediaQuery('(max-width: 759px)');
 	return (
 		<header className={styles.header}>
-			<Link
-				className={styles.logo}
-				href='/'
-				aria-label='Go to homepage'>
-				<span>Badr Morsadi</span>
-			</Link>
-			<div className={styles.navigation}>
-				<nav
-					className={styles.nav}
-					aria-label='Primary navigation'>
-					{NAV.map((item) => (
-						<Link
-							key={item.href}
-							href={item.href}
-							className={styles.navLink}
-							data-active={activeHref === item.href ? 'true' : 'false'}>
-							{item.label}
-						</Link>
-					))}
-				</nav>
+			<Logo />
+			<div className={styles.headerRight}>
+				<Navigation />
+				{mounted && !isMobile && <CopyButton caption='bmorsadi@gmail.com' />}
 			</div>
-			<CopyButton caption='bmorsadi@gmail.com' />
 		</header>
 	);
 }
