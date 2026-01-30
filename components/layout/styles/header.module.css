@@ -7,6 +7,7 @@
 	background-color: var(--background);
 	padding: 20px 10px;
 	box-shadow: var(--shadow-elevation-low);
+	min-height: 85px;
 
 	.navLink {
 		text-transform: uppercase;
