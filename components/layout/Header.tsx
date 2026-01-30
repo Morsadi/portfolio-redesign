@@ -2,8 +2,8 @@
 
 import styles from './styles/header.module.css';
 import Logo from './logo';
-import Navigation from './navigation';
-import { CopyButton } from '@/components/ui/CopyButton/CopyButton';
+import Navigation from './Navigation';
+import CopyButton from '@/components/ui/CopyButton/CopyButton';
 import { useHasMounted } from '@/hooks/useHasMounted';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 

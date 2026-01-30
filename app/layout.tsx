@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
 import { config } from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
+import styles from './layout.module.css';
 
 import { Inter } from 'next/font/google';
 import '../styles/_index.css';
@@ -28,9 +29,11 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={`${inter.variable}`}>
-				<Header />
-				<main>{children}</main>
-				<Footer />
+				<div className={styles.pageContainer}>
+					<Header />
+					<main>{children}</main>
+					<Footer />
+				</div>
 			</body>
 		</html>
 	);

@@ -6,7 +6,7 @@ import type { ButtonProps } from '@/types/ui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
-export const CopyButton = ({ caption, linkToCopy = '' }: ButtonProps) => {
+export default function CopyButton({ caption, linkToCopy = '' }: ButtonProps) {
 	const [copied, setCopied] = useState(false);
 	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -35,4 +35,4 @@ export const CopyButton = ({ caption, linkToCopy = '' }: ButtonProps) => {
 			<FontAwesomeIcon icon={faCopy} />
 		</button>
 	);
-};
+}
