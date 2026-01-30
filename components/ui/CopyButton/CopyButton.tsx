@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import styles from './copyButton.module.css';
 import type { ButtonProps } from '@/types/ui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
+
+import styles from './copyButton.module.css';
 
 export default function CopyButton({ caption, linkToCopy = '' }: ButtonProps) {
 	const [copied, setCopied] = useState(false);

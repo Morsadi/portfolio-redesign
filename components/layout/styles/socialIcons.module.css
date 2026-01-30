@@ -1,0 +1,31 @@
+.socialIcons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+
+	& a {
+		transition: color var(--hover-transition);
+
+		& > svg {
+			width: 30px;
+			height: auto;
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				color: var(--faded-foreground);
+			}
+		}
+	}
+
+	@media (min-width: 64em) {
+		& {
+			gap: 20px;
+
+			& a > svg {
+				width: 40px;
+			}
+		}
+	}
+}

@@ -1,7 +1,6 @@
 .copyButton {
 	--text-color: var(--background);
 	--bg-color: var(--foreground);
-	--bg-hover-color: #363636;
 
 	color: var(--text-color);
 	background-color: var(--bg-color);
@@ -42,7 +41,7 @@
 	}
 
 	&:hover {
-		background-color: var(--bg-hover-color);
+		background-color: var(--faded-foreground);
 	}
 	&.copied {
 		pointer-events: none;
