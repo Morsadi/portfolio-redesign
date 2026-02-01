@@ -6,10 +6,11 @@
 	--hover-transition: 0.3s ease;
 	--widget-margin-bottom: 80px;
 
-	@media (min-width: 47.5em) {
-		& {
-			--widget-margin-bottom: 160px;
-		}
+	@media (min-width: 48em) {
+		--widget-margin-bottom: 100px;
+	}
+	@media (min-width: 64em) {
+		--widget-margin-bottom: 160px;
 	}
 }
 
