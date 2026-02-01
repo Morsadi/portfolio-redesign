@@ -4,6 +4,14 @@
 	--foreground: #000;
 	--faded-foreground: #363636;
 	--hover-transition: 0.3s ease;
+	--widget-margin-bottom: 80px;
+
+	@media (min-width: 48em) {
+		--widget-margin-bottom: 100px;
+	}
+	@media (min-width: 64em) {
+		--widget-margin-bottom: 160px;
+	}
 }
 
 html,
@@ -65,9 +73,19 @@ p {
 	}
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-primary);
+	font-weight: 500;
+}
 h1 {
 	font-size: 4.375rem;
 	line-height: 1;
+	/* font-weight: 500; */
 }
 
 h2 {
@@ -112,5 +130,8 @@ h6 {
 	}
 	h6 {
 		font-size: 1rem;
+	}
+	p {
+		font-size: 1.5rem;
 	}
 }

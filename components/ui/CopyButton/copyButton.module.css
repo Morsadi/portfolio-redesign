@@ -18,6 +18,7 @@
 	transition: background-color var(--hover-transition);
 	border-radius: 3em;
 	overflow: hidden;
+	width: fit-content;
 
 	& svg {
 		width: 20px;

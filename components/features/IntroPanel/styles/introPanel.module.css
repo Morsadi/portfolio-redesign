@@ -1,0 +1,54 @@
+.introPanel {
+	max-width: 1280px;
+	margin: 40px auto var(--widget-margin-bottom);
+	display: grid;
+	gap: 60px;
+
+	.imgContainer {
+		width: 100%;
+		max-width: 230px;
+
+		img {
+			width: 100%;
+			height: auto;
+
+			object-fit: cover;
+		}
+	}
+	.contentSection {
+		display: grid;
+		gap: 20px;
+		min-width: 0;
+		order: 1;
+
+		& h1 {
+			font-size: clamp(3.375rem, 18vw, 4.375rem);
+		}
+
+		.description {
+			white-space: break-spaces;
+		}
+	}
+
+	@media (min-width: 40em) {
+		& {
+			grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+			gap: 40px;
+			margin-top: 120px;
+
+			.contentSection h1 {
+				font-size: clamp(4.375rem, 10vw, 8.75rem);
+			}
+
+			.imgContainer {
+				min-width: 0;
+				max-width: 445px;
+			}
+		}
+	}
+	@media (min-width: 48em) {
+		.copyButton {
+			display: none;
+		}
+	}
+}

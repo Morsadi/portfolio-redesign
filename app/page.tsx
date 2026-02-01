@@ -1,17 +1,37 @@
-import styles from './page.module.css';
+import { notFound } from 'next/navigation';
+import { getPageBySlug } from '@/lib/contentful/contentful';
+import type { ContentfulEntry, SectionEntryFields } from '@/types/cms/contentful';
+import { SECTION_TYPES } from '@/types/cms/contentful';
+import IntroPanel from '@/components/features/IntroPanel/IntroPanel';
 
-export default function Home() {
-	return (
-		<>
-			<h1>Home</h1>
-			<h2>H2 text</h2>
-			<h3>H3 text</h3>
-			<h4>H4 text</h4>
-			<h5>H5 text</h5>
-			<h6>H6 text</h6>
-			<p>
-				This is a sample paragraph to demonstrate the global styles applied to the body text. <a href='#'>This is a link</a>.
-			</p>
-		</>
-	);
+const renderSection = (section: ContentfulEntry<SectionEntryFields>) => {
+	const { type, title, description, asset } = section.fields;
+
+	const sectionType = type?.fields?.type;
+
+	switch (sectionType) {
+		case SECTION_TYPES.IntroPanel: {
+			return (
+				<IntroPanel
+					key={section.sys.id}
+					title={title ?? ''}
+					description={description ?? ''}
+					asset={asset ? asset[0] : undefined}
+				/>
+			);
+		}
+
+		default:
+			return null;
+	}
+};
+
+export default async function HomePage() {
+	const page = await getPageBySlug('homepage');
+
+	if (!page) notFound();
+
+	const sections = page.fields.sections ?? [];
+
+	return <main aria-label='Home'>{sections.map((section) => renderSection(section))}</main>;
 }

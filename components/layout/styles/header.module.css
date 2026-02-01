@@ -6,8 +6,6 @@
 	align-items: center;
 	background-color: var(--background);
 	padding: 20px 10px;
-	box-shadow: var(--shadow-elevation-low);
-	min-height: 85px;
 
 	.navLink {
 		text-transform: uppercase;
@@ -33,9 +31,20 @@
 		gap: 20px;
 	}
 
-	@media (min-width: 47.5em) {
+	.copyButton {
+		display: none;
+	}
+
+	@media (min-width: 48em) {
+		& {
+			min-height: 85px;
+			padding: 20px;
+		}
 		.navLink {
 			font-size: 1.25rem;
+		}
+		.copyButton {
+			display: flex;
 		}
 	}
 
