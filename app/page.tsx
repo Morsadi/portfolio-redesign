@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { getPageBySlug } from '@/lib/contentful/contentful';
 import type { ContentfulEntry, SectionEntryFields } from '@/types/cms/contentful';
 import { SECTION_TYPES } from '@/types/cms/contentful';
-import IntroPanel from '@/components/features/IntroPanel/IntroPanel';
+import Hero from '@/components/sections/Hero/Hero';
 
 const renderSection = (section: ContentfulEntry<SectionEntryFields>) => {
 	const { type, title, description, asset } = section.fields;
@@ -12,7 +12,7 @@ const renderSection = (section: ContentfulEntry<SectionEntryFields>) => {
 	switch (sectionType) {
 		case SECTION_TYPES.IntroPanel: {
 			return (
-				<IntroPanel
+				<Hero
 					key={section.sys.id}
 					title={title ?? ''}
 					description={description ?? ''}

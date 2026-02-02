@@ -34,6 +34,9 @@
 	.copyButton {
 		display: none;
 	}
+	.navLink[data-active='true'] {
+		text-decoration-color: var(--foreground);
+	}
 
 	@media (min-width: 48em) {
 		& {

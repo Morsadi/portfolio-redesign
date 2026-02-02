@@ -8,7 +8,7 @@ export default function Footer() {
 	return (
 		<footer>
 			<div className={styles.footerContainer}>
-				<h2>Let's get to know each other</h2>
+				<h2>Let&apos;s get to know each other</h2>
 				<CopyButton caption='bmorsadi@gmail.com' />
 				<SocialIcons />
 			</div>
