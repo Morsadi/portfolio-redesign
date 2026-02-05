@@ -1,0 +1,91 @@
+.aboutSection {
+	display: grid;
+	gap: 60px;
+	margin: 0 auto var(--widget-margin-bottom);
+	max-width: var(--content-max-width);
+
+	.sectionContent {
+		display: grid;
+		gap: 8px;
+
+		.subtitle {
+			font-weight: 600;
+		}
+	}
+
+	.timeCol {
+		display: flex;
+		gap: 6px;
+		font-weight: 500;
+
+		& time,
+		& p {
+			font-size: 1.5rem;
+		}
+	}
+	.experiences {
+		display: grid;
+		gap: 65px;
+
+		.experienceGrid {
+			display: grid;
+			gap: 12px;
+		}
+	}
+
+	.bodyCol {
+		display: grid;
+		gap: 16px;
+
+		.expHeader {
+			font-size: 1.5rem;
+			line-height: 1.2;
+
+			& > * {
+				font: inherit;
+				line-height: inherit;
+			}
+
+			.company {
+				font-weight: 500;
+			}
+		}
+	}
+
+	@media (min-width: 40em) {
+		.experienceGrid,
+		.sectionContent {
+			grid-template-columns: 0.8fr 1fr;
+			gap: 20px;
+		}
+	}
+	@media (min-width: 64em) {
+		& {
+			gap: 144px;
+
+			.timeCol {
+				gap: 10px;
+
+				& time,
+				& p {
+					font-size: 2rem;
+				}
+			}
+			.experiences {
+				gap: 170px;
+			}
+			.bodyCol {
+				gap: 20px;
+
+				.expHeader {
+					font-size: 2rem;
+					line-height: 1.4;
+				}
+			}
+			.experienceGrid,
+			.sectionContent {
+				gap: 50px;
+			}
+		}
+	}
+}

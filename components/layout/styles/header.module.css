@@ -49,6 +49,9 @@
 		.copyButton {
 			display: flex;
 		}
+		.navigation {
+			gap: 20px;
+		}
 	}
 
 	@media (hover: hover) {
