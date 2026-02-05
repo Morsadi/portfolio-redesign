@@ -3,8 +3,11 @@
 	--background: #ffffff;
 	--foreground: #000;
 	--faded-foreground: #363636;
+	--border-color-gray: #ccc;
 	--hover-transition: 0.3s ease;
 	--widget-margin-bottom: 80px;
+	--content-max-width: 1350px;
+	--body-max-width: 1550px;
 
 	@media (min-width: 48em) {
 		--widget-margin-bottom: 100px;
@@ -26,11 +29,11 @@ body {
 	background: var(--background);
 	font-family: var(--font-primary);
 
-	& header,
+	& > header,
 	& main,
 	& footer {
 		margin-inline: auto;
-		max-width: 1550px;
+		max-width: var(--body-max-width);
 		width: 100%;
 		padding-inline: 10px;
 	}
@@ -91,6 +94,7 @@ h1 {
 h2 {
 	font-size: 4rem;
 	line-height: 1;
+	margin-bottom: 20px;
 }
 
 h3 {

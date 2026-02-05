@@ -31,7 +31,7 @@ export default function RootLayout({
 			<body className={`${inter.variable}`}>
 				<div className={styles.pageContainer}>
 					<Header />
-					<main>{children}</main>
+					<main className={styles.mainContainer}>{children}</main>
 					<Footer />
 				</div>
 			</body>
