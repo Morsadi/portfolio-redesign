@@ -5,6 +5,8 @@
 	justify-items: center;
 	gap: 10px;
 	margin-bottom: 25px;
+	border-top: 1px solid var(--border-color-gray);
+	padding-top: var(--widget-margin-bottom);
 
 	& h2 {
 		font-size: 2.5rem;
@@ -28,6 +30,7 @@
 		& {
 			max-width: 1150px;
 			gap: 30px;
+			padding-bottom: var(--widget-margin-bottom);
 
 			& h2 {
 				font-size: 7.125rem;
