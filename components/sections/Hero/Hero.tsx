@@ -1,4 +1,3 @@
-'use client';
 import Image from 'next/image';
 import type { HeroFields } from '@/types/content';
 import CopyButton from '@/components/ui/CopyButton/CopyButton';

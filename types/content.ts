@@ -1,4 +1,4 @@
-import { ContentfulAsset, ExperienceEntryFields, ContentfulEntry } from './cms/contentful';
+import { ContentfulAsset, ExperienceEntryFields, ContentfulEntry, ProjectEntryFields } from './cms/contentful';
 
 export type HeroFields = {
 	title: string;
@@ -12,4 +12,16 @@ export type AboutFields = {
 	subtitle?: string;
 	description?: string;
 	experiences?: Array<ContentfulEntry<ExperienceEntryFields>>;
+};
+
+export type FeaturedProjectsFields = {
+	title?: string;
+	items: Array<ContentfulEntry<ProjectEntryFields>>;
+	buttonCaption?: string;
+};
+
+export type ProjectCardProps = {
+	project: ContentfulEntry<ProjectEntryFields>;
+	projectBasePath?: string;
+	buttonCaption?: string;
 };

@@ -1,10 +1,10 @@
 :root {
 	--font-primary: Inter, sans-serif;
 	--background: #ffffff;
-	--foreground: #000;
-	--faded-foreground: #363636;
+	--foreground: #121212;
+	--faded-foreground: #4a4a4a;
 	--border-color-gray: #ccc;
-	--hover-transition: 0.3s ease;
+	--hover-transition: 0.4s ease;
 	--widget-margin-bottom: 80px;
 	--content-max-width: 1350px;
 	--body-max-width: 1550px;
@@ -29,13 +29,22 @@ body {
 	background: var(--background);
 	font-family: var(--font-primary);
 
-	& > header,
-	& main,
-	& footer {
+	& > div > header,
+	& > div > main,
+	& > div > footer {
 		margin-inline: auto;
 		max-width: var(--body-max-width);
 		width: 100%;
 		padding-inline: 10px;
+
+		&header {
+			max-width: 1720px;
+		}
+		@media (min-width: 40em) {
+			& {
+				padding-inline: 20px;
+			}
+		}
 	}
 }
 
@@ -88,7 +97,6 @@ h6 {
 h1 {
 	font-size: 4.375rem;
 	line-height: 1;
-	/* font-weight: 500; */
 }
 
 h2 {
@@ -116,7 +124,7 @@ h6 {
 	line-height: 1.2;
 }
 
-@media (min-width: 64em) {
+@media (min-width: 64rem) {
 	h1 {
 		font-size: 8.75rem;
 	}
@@ -135,6 +143,9 @@ h6 {
 	h6 {
 		font-size: 1rem;
 	}
+}
+
+@media (min-width: 102rem) {
 	p {
 		font-size: 1.5rem;
 	}
