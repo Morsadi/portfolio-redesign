@@ -28,7 +28,7 @@ export const getPageBySlug = cache(async (slug: string): Promise<ContentfulEntry
 	const res = await contentfulClient.getEntries<PageEntryFields>({
 		content_type: 'page',
 		'fields.slug': slug,
-		include: 2,
+		include: 3,
 		limit: 1,
 	});
 

@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { getPageBySlug } from '@/lib/contentful/contentful';
-import type { ContentfulEntry, SectionEntryFields, ExperienceEntryFields } from '@/types/cms/contentful';
+import type { ContentfulEntry, SectionEntryFields, ExperienceEntryFields, ProjectEntryFields } from '@/types/cms/contentful';
 import { SECTION_TYPES } from '@/types/cms/contentful';
 import Hero from '@/components/sections/Hero/Hero';
 import About from '@/components/sections/About/About';
+import FeaturedProjects from '@/components/sections/FeaturedProjects/FeaturedProjects';
 
 const renderSection = (section: ContentfulEntry<SectionEntryFields>) => {
 	const { type, title, subtitle, description, asset } = section.fields;
@@ -30,6 +31,15 @@ const renderSection = (section: ContentfulEntry<SectionEntryFields>) => {
 					subtitle={subtitle ?? ''}
 					description={description ?? ''}
 					experiences={section.fields.items as Array<ContentfulEntry<ExperienceEntryFields>>}
+				/>
+			);
+		}
+		case SECTION_TYPES.FeaturedProjects: {
+			return (
+				<FeaturedProjects
+					key={section.sys.id}
+					title={title ?? ''}
+					items={section.fields.items as Array<ContentfulEntry<ProjectEntryFields>>}
 				/>
 			);
 		}

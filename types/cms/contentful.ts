@@ -20,8 +20,7 @@ export type ContentfulAsset = Asset;
  * ------------------------------------------------------------------------------------------------- */
 
 export type TagEntryFields = {
-	title: string;
-	slug: string;
+	name: string;
 };
 
 /* -------------------------------------------------------------------------------------------------
@@ -46,7 +45,7 @@ export type ProjectEntryFields = {
 	slug: string;
 
 	summary?: string;
-	featuredImage?: ContentfulAsset;
+	asset?: ContentfulAsset;
 
 	tags?: Array<ContentfulEntry<TagEntryFields>>;
 	sections?: Array<ContentfulEntry<SectionEntryFields>>;
