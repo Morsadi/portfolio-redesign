@@ -1,48 +1,35 @@
-import { useId, useMemo } from 'react';
 import styles from './styles/featuredProjects.module.css';
 
-import type { ContentfulEntry, ProjectEntryFields, SectionItemsEntry } from '@/types/cms/contentful';
 import type { FeaturedProjectsFields } from '@/types/content';
-
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard';
 
-type FeaturedProjectsProps = FeaturedProjectsFields & {
-	projectBasePath?: string;
-};
+export default function FeaturedProjects({ id, title = 'Featured Work', items }: FeaturedProjectsFields) {
+	const projects = items ?? [];
 
-const isProjectEntry = (entry: SectionItemsEntry): entry is ContentfulEntry<ProjectEntryFields> => {
-	return typeof (entry as ContentfulEntry<ProjectEntryFields>)?.fields?.slug === 'string' && typeof (entry as ContentfulEntry<ProjectEntryFields>)?.fields?.title === 'string';
-};
-
-export default function FeaturedProjects({ title = 'Featured Work', items, projectBasePath = '/projects' }: FeaturedProjectsProps) {
-	const sectionId = useId();
-
-	const projects = useMemo(() => (items ?? []).filter(isProjectEntry).slice(0, 3), [items]);
-
-	if (!projects.length) return null;
+	if (!projects.length) return <p className={styles.noProjects}>No projects to display.</p>;
 
 	return (
 		<section
+			id={`section-${id}`}
 			className={styles.featuredProjects}
-			aria-labelledby={`${sectionId}-title`}>
+			aria-labelledby={`section-${id}-title`}>
 			<h2
-				id={`${sectionId}-title`}
+				id={`section-${id}-title`}
 				className={styles.title}>
 				{title}
 			</h2>
 
-			<div
+			<ul
 				className={styles.projectsContainer}
-				role='grid'
 				aria-label='Featured projects'>
 				{projects.map((project) => (
-					<ProjectCard
+					<li
 						key={project.sys.id}
-						project={project}
-						projectBasePath={projectBasePath}
-					/>
+						className={styles.projectItem}>
+						<ProjectCard project={project} />
+					</li>
 				))}
-			</div>
+			</ul>
 		</section>
 	);
 }

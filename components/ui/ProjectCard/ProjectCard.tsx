@@ -18,6 +18,7 @@ export default function ProjectCard({ project, projectBasePath = '/projects', bu
 
 	return (
 		<article
+			id={`project-${sys.id}`}
 			className={styles.projectCard}
 			aria-labelledby={`project-${sys.id}-title`}>
 			<div className={styles.contentSection}>
