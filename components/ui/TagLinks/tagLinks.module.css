@@ -1,0 +1,18 @@
+.tagLinksContainer {
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+
+		.tagItem {
+			display: inline-block;
+			font-size: 20px;
+			font-weight: 300;
+			line-height: 1.1;
+			background: var(--foreground);
+			color: var(--background);
+			padding: 6px 10px;
+			border-radius: 8px;
+		}
+	}
+}

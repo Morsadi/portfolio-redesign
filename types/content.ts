@@ -22,6 +22,15 @@ export type FeaturedProjectsFields = {
 	projectBasePath?: string;
 };
 
+export type TagLinksProps = {
+	tags?: Array<ContentfulEntry<TagEntryFields>>;
+	basePath?: string;
+	ariaLabel?: string;
+	showIcon?: boolean;
+	className?: string;
+	listClassName?: string;
+};
+
 export type ProjectCardProps = {
 	project: ContentfulEntry<ProjectEntryFields>;
 	projectBasePath?: string;
