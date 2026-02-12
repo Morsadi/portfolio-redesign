@@ -21,6 +21,7 @@ export type ContentfulAsset = Asset;
 
 export type TagEntryFields = {
 	name: string;
+	slug: string;
 };
 
 /* -------------------------------------------------------------------------------------------------
@@ -45,6 +46,7 @@ export type ProjectEntryFields = {
 	slug: string;
 
 	summary?: string;
+	link?: string;
 	asset?: ContentfulAsset;
 
 	tags?: Array<ContentfulEntry<TagEntryFields>>;
@@ -59,6 +61,7 @@ export const SECTION_TYPES = {
 	IntroPanel: 'IntroPanel',
 	About: 'About',
 	FeaturedProjects: 'FeaturedProjects',
+	ProjectsExplorer: 'ProjectsExplorer',
 } as const;
 
 export type SectionType = (typeof SECTION_TYPES)[keyof typeof SECTION_TYPES];
@@ -71,10 +74,12 @@ export type SectionTypeEntryFields = {
 export type SectionItemsEntry = ContentfulEntry<ProjectEntryFields> | ContentfulEntry<ExperienceEntryFields> | ContentfulEntry<SectionEntryFields>;
 
 export type SectionEntryFields = {
+	key?: string;
 	type: ContentfulEntry<SectionTypeEntryFields>;
 	title?: string;
 	subtitle?: string;
 	description?: string;
+	isHomepage?: boolean;
 
 	body?: any; // TODO: type for rich text content
 

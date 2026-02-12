@@ -5,11 +5,14 @@ import { SECTION_TYPES } from '@/types/cms/contentful';
 import Hero from '@/components/sections/Hero/Hero';
 import About from '@/components/sections/About/About';
 import FeaturedProjects from '@/components/sections/FeaturedProjects/FeaturedProjects';
+import ProjectExplorer from '@/components/sections/ProjectsExplorer/ProjectsExplorer';
 
 const renderSection = (section: ContentfulEntry<SectionEntryFields>) => {
-	const { type, title, subtitle, description, asset } = section.fields;
+	const { type, title, subtitle, description, asset, isHomepage } = section.fields;
 
 	const sectionType = type?.fields?.type;
+
+	console.log(section.fields);
 
 	switch (sectionType) {
 		case SECTION_TYPES.IntroPanel: {
@@ -19,6 +22,7 @@ const renderSection = (section: ContentfulEntry<SectionEntryFields>) => {
 					title={title ?? ''}
 					description={description ?? ''}
 					asset={asset ? asset[0] : undefined}
+					isHomepage={isHomepage}
 				/>
 			);
 		}
@@ -38,6 +42,7 @@ const renderSection = (section: ContentfulEntry<SectionEntryFields>) => {
 			return (
 				<FeaturedProjects
 					key={section.sys.id}
+					id={section.sys.id}
 					title={title ?? ''}
 					items={section.fields.items as Array<ContentfulEntry<ProjectEntryFields>>}
 				/>

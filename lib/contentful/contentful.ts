@@ -6,7 +6,7 @@ import type { ContentfulEntry, PageEntryFields, ProjectEntryFields } from '@/typ
 export const getProjects = cache(async (): Promise<Array<ContentfulEntry<ProjectEntryFields>>> => {
 	const res = await contentfulClient.getEntries<ProjectEntryFields>({
 		content_type: 'project',
-		include: 2,
+		include: 3,
 		order: ['-sys.createdAt'],
 	});
 

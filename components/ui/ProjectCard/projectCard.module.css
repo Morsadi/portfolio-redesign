@@ -8,14 +8,12 @@
 		aspect-ratio: 7 / 4;
 		transition: filter var(--hover-transition);
 
-		@media (hover: hover) {
-			& {
-				filter: grayscale(90%) contrast(1.15);
-			}
+		& {
+			filter: grayscale(90%) contrast(1.15);
+		}
 
-			.projectCard:hover & {
-				filter: grayscale(30%) contrast(1);
-			}
+		.projectCard:hover & {
+			filter: grayscale(30%) contrast(1);
 		}
 
 		.cardImage {
