@@ -34,44 +34,50 @@ export default function ProjectCard({ project, projectBasePath = '/projects', bu
 							<li
 								key={tag.sys.id}
 								className={styles.tagItem}>
-								{tag.fields.name}
+								<Link href={`/projects?tags=${tag.fields.slug}`}>{tag.fields.name}</Link>
 							</li>
 						))}
 					</ul>
 				) : null}
 				{fields.summary ? <p className={styles.cardDesc}>{fields.summary}</p> : null}
-
 				{buttonCaption === '' ? null : (
-					<Link
-						href={`${projectBasePath}/${fields.slug}`}
-						className={styles.learnMoreLink}
-						aria-label={`View details for ${fields.title} project`}>
-						{buttonCaption}
-						<FontAwesomeIcon
-							aria-hidden='true'
-							icon={faArrowRight}
-						/>
-					</Link>
+					<div className={styles.actionButtons}>
+						<Link
+							href={`${projectBasePath}/${fields.slug}`}
+							className={styles.learnMoreLink}
+							aria-label={`View details`}>
+							{buttonCaption}
+							<FontAwesomeIcon
+								aria-hidden='true'
+								icon={faArrowRight}
+							/>
+						</Link>
+					</div>
 				)}
 			</div>
 			<div className={styles.imgContainer}>
-				{imgUrl ? (
-					<Image
-						src={imgUrl}
-						alt={imgAlt}
-						width={CARD_IMAGE_WIDTH}
-						height={CARD_IMAGE_HEIGHT}
-						className={styles.cardImage}
-						sizes='(min-width: 1024px) 500px, 100vw'
-						aria-hidden='true'
-					/>
-				) : (
-					<div
-						className={styles.imgFallback}
-						role='img'
-						aria-hidden='true'
-					/>
-				)}
+				<Link
+					href={`${projectBasePath}/${fields.slug}`}
+					className={styles.imageLink}
+					aria-label={`View details`}>
+					{imgUrl ? (
+						<Image
+							src={imgUrl}
+							alt={imgAlt}
+							width={CARD_IMAGE_WIDTH}
+							height={CARD_IMAGE_HEIGHT}
+							className={styles.cardImage}
+							sizes='(min-width: 1024px) 500px, 100vw'
+							aria-hidden='true'
+						/>
+					) : (
+						<div
+							className={styles.imgFallback}
+							role='img'
+							aria-hidden='true'
+						/>
+					)}
+				</Link>
 			</div>
 		</article>
 	);

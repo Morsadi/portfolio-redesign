@@ -4,7 +4,10 @@
 	--foreground: #121212;
 	--faded-foreground: #4a4a4a;
 	--border-color-gray: #ccc;
-	--hover-transition: 0.4s ease;
+	--inactieve-grey: #989898;
+	--hover-transition: 0.4s ease-in-out;
+	--hover-transition-short: 0.2s ease-in-out;
+	--hover-transition-long: 0.6s ease-in-out;
 	--widget-margin-bottom: 80px;
 	--content-max-width: 1350px;
 	--body-max-width: 1550px;

@@ -30,6 +30,13 @@
 		}
 	}
 
+	&.interior {
+		margin-bottom: calc(var(--widget-margin-bottom) / 2);
+		grid-template-columns: minmax(0, 1fr);
+		text-align: center;
+		max-width: 860px;
+	}
+
 	@media (min-width: 40em) {
 		& {
 			grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
