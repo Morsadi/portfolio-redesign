@@ -1,0 +1,49 @@
+.projectDetail {
+	margin-top: var(--widget-margin-bottom);
+
+	.imgContainer {
+		position: relative;
+		overflow: hidden;
+		height: 200px;
+		width: 100%;
+		background-color: var(--foreground);
+
+		& img {
+			margin-inline: auto;
+			display: block;
+			margin-top: 50px;
+			object-fit: cover;
+		}
+	}
+	.detailHeader {
+		display: grid;
+		justify-items: center;
+		gap: 10px;
+		margin-bottom: 50px;
+		padding-inline: 20px;
+
+		.title {
+			text-align: center;
+		}
+
+		.projectTags {
+			justify-items: center;
+		}
+
+		.description {
+			max-width: 70ch;
+			text-align: center;
+		}
+	}
+
+	@media (min-width: 40em) {
+		.imgContainer {
+			height: 400px;
+		}
+	}
+	@media (min-width: 64em) {
+		.imgContainer {
+			height: 600px;
+		}
+	}
+}

@@ -7,6 +7,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import type { ProjectCardProps } from '@/types/content';
 import { getAssetAlt, getAssetUrl } from '@/lib/contentful/helpers';
+import TagLinks from '../TagLinks/TagLinks';
 
 const CARD_IMAGE_WIDTH = 605;
 const CARD_IMAGE_HEIGHT = 345;
@@ -28,21 +29,16 @@ export default function ProjectCard({ project, projectBasePath = '/projects', bu
 					{fields.title}
 				</h3>
 
-				{fields.tags?.length ? (
-					<ul className={styles.tags}>
-						{fields.tags.map((tag) => (
-							<li
-								key={tag.sys.id}
-								className={styles.tagItem}>
-								<Link href={`/projects?tags=${tag.fields.slug}`}>{tag.fields.name}</Link>
-							</li>
-						))}
-					</ul>
-				) : null}
-				{fields.summary ? <p className={styles.cardDesc}>{fields.summary}</p> : null}
+				<TagLinks
+					tags={fields.tags}
+					className={styles.projectTags}
+				/>
+
+				{fields.description ? <p className={styles.cardDesc}>{fields.description}</p> : null}
 				{buttonCaption === '' ? null : (
 					<div className={styles.actionButtons}>
 						<Link
+							data-underlined-link
 							href={`${projectBasePath}/${fields.slug}`}
 							className={styles.learnMoreLink}
 							aria-label={`View details`}>

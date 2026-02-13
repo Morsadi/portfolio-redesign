@@ -161,10 +161,6 @@ export default function ProjectExplorerClient({ sectionId, projects, tagOptions 
 					</li>
 				))}
 			</ul>
-
-			<p className={styles.resultsCount}>
-				{filteredProjects.length === 0 ? 'No projects match the selected filters.' : `${filteredProjects.length} result${filteredProjects.length === 1 ? '' : 's'}`}
-			</p>
 		</div>
 	);
 }

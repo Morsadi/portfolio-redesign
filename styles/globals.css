@@ -1,16 +1,29 @@
 :root {
+	/* Global Styles */
+
+	/* Font Imports */
 	--font-primary: Inter, sans-serif;
+
+	/* Base Colors */
 	--background: #ffffff;
 	--foreground: #121212;
 	--faded-foreground: #4a4a4a;
 	--border-color-gray: #ccc;
 	--inactieve-grey: #989898;
+
+	/* Transition Variables */
 	--hover-transition: 0.4s ease-in-out;
 	--hover-transition-short: 0.2s ease-in-out;
 	--hover-transition-long: 0.6s ease-in-out;
+
+	/* Body Styles */
 	--widget-margin-bottom: 80px;
 	--content-max-width: 1350px;
 	--body-max-width: 1550px;
+	/* Tags */
+	--tag-bg-color: var(--foreground);
+	--tag-text-color: var(--background);
+	--tag-hover-bg-color: var(--faded-foreground);
 
 	@media (min-width: 48em) {
 		--widget-margin-bottom: 100px;
@@ -33,7 +46,7 @@ body {
 	font-family: var(--font-primary);
 
 	& > div > header,
-	& > div > main,
+	& > div > main:not([data-projectDetails='true']),
 	& > div > footer {
 		margin-inline: auto;
 		max-width: var(--body-max-width);
@@ -64,6 +77,32 @@ ul {
 a {
 	color: inherit;
 	text-decoration: none;
+
+	&[data-underlined-link] {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		width: fit-content;
+		font-size: 20px;
+		font-weight: 500;
+		text-decoration: underline;
+		text-underline-offset: 4px;
+		transition: text-decoration-color var(--hover-transition);
+
+		& svg {
+			transition: transform var(--hover-transition);
+		}
+
+		@media (hover: hover) {
+			&:hover {
+				text-decoration-color: var(--background);
+
+				& svg {
+					transform: translateX(4px);
+				}
+			}
+		}
+	}
 }
 
 button {

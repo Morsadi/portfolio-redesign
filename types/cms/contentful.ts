@@ -45,7 +45,7 @@ export type ProjectEntryFields = {
 	title: string;
 	slug: string;
 
-	summary?: string;
+	description?: string;
 	link?: string;
 	asset?: ContentfulAsset;
 
