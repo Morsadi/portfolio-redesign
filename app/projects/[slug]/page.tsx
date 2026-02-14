@@ -1,5 +1,8 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import styles from './projectDetail.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { getProjectBySlug } from '@/lib/contentful/contentful';
 
@@ -13,11 +16,13 @@ type PageProps = {
 	params: Promise<{ slug: string }>;
 };
 
+const overviewCaption = 'Overview';
+const websiteCaption = 'View Website';
+
 function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryFields> }) {
 	const { fields, sys } = project;
 
 	const titleId = `project-${sys.id}-title`;
-	const descId = `project-${sys.id}-desc`;
 
 	return (
 		<article
@@ -36,14 +41,33 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 					tags={fields.tags}
 					className={styles.projectTags}
 				/>
-				{fields.description ? (
-					<p
-						id={descId}
-						className={styles.description}>
-						{fields.description}
-					</p>
-				) : null}
+				{fields.intro ? <p className={styles.introMessage}>{fields.intro}</p> : null}
 			</header>
+
+			{fields.overview && (
+				<section
+					aria-labelledby='project-overview-heading'
+					className={styles.overviewSection}>
+					<div>
+						<header>
+							<h2 id='project-overview-heading'>{overviewCaption}</h2>
+						</header>
+
+						{fields.overview && <p>{fields.overview}</p>}
+
+						{fields.link && (
+							<Link
+								data-underlined-link
+								href={fields.link}
+								target='_blank'
+								rel='noopener noreferrer'
+								aria-label={`${websiteCaption} (opens in a new tab)`}>
+								{websiteCaption} <FontAwesomeIcon icon={faExternalLinkAlt} />
+							</Link>
+						)}
+					</div>
+				</section>
+			)}
 
 			{fields.sections?.length ? (
 				<section
@@ -52,6 +76,8 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 					<SectionRenderer sections={fields.sections} />
 				</section>
 			) : null}
+
+			{/* ---- TODO: Glide slide ---- */}
 		</article>
 	);
 }

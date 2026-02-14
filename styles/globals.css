@@ -10,6 +10,7 @@
 	--faded-foreground: #4a4a4a;
 	--border-color-gray: #ccc;
 	--inactieve-grey: #989898;
+	--hyperlink-color: var(--foreground);
 
 	/* Transition Variables */
 	--hover-transition: 0.4s ease-in-out;
@@ -87,6 +88,7 @@ a {
 		font-weight: 500;
 		text-decoration: underline;
 		text-underline-offset: 4px;
+		color: var(--hyperlink-color, var(--foreground));
 		transition: text-decoration-color var(--hover-transition);
 
 		& svg {
@@ -95,7 +97,7 @@ a {
 
 		@media (hover: hover) {
 			&:hover {
-				text-decoration-color: var(--background);
+				text-decoration-color: var(--hyperlink-color-hover, var(--background));
 
 				& svg {
 					transform: translateX(4px);

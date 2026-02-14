@@ -44,11 +44,12 @@ export type ExperienceEntryFields = {
 export type ProjectEntryFields = {
 	title: string;
 	slug: string;
-
+	intro?: string;
+	overview?: string;
 	description?: string;
 	link?: string;
-	asset?: ContentfulAsset;
 
+	asset?: ContentfulAsset;
 	tags?: Array<ContentfulEntry<TagEntryFields>>;
 	sections?: Array<ContentfulEntry<SectionEntryFields>>;
 };
