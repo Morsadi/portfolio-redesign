@@ -14,8 +14,8 @@ const CARD_IMAGE_HEIGHT = 345;
 
 export default function ProjectCard({ project, projectBasePath = '/projects', buttonCaption = 'Learn More' }: ProjectCardProps) {
 	const { fields, sys } = project;
-	const imgUrl = getAssetUrl(fields.asset);
-	const imgAlt = getAssetAlt(fields.asset, fields.title);
+	const imgUrl = getAssetUrl(fields.featuredAsset);
+	const imgAlt = getAssetAlt(fields.featuredAsset, fields.title);
 
 	return (
 		<article

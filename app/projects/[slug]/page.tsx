@@ -70,11 +70,9 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 			)}
 
 			{fields.sections?.length ? (
-				<section
-					className={styles.sections}
-					aria-label='Project sections'>
+				<div className={styles.projectSections}>
 					<SectionRenderer sections={fields.sections} />
-				</section>
+				</div>
 			) : null}
 
 			{/* ---- TODO: Glide slide ---- */}

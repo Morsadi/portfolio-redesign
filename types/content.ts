@@ -43,3 +43,12 @@ export type ProjectExplorerProps = {
 	title?: string;
 	tags?: Array<ContentfulEntry<TagEntryFields>>;
 };
+
+export type SideBySideProps = {
+	index?: number;
+	id: string;
+	subtitle?: string;
+	title?: string;
+	description?: string;
+	asset?: ContentfulAsset;
+};

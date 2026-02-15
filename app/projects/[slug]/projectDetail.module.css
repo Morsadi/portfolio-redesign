@@ -56,6 +56,7 @@
 		background-color: var(--foreground);
 		color: var(--background);
 		padding: 60px 20px 80px;
+		margin-bottom: var(--widget-margin-bottom);
 
 		& > div {
 			gap: 20px;
@@ -69,5 +70,10 @@
 			font-weight: 400;
 			margin-bottom: 0;
 		}
+	}
+
+	/* sections */
+	.projectSections {
+		display: grid;
 	}
 }

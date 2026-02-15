@@ -49,7 +49,8 @@ export type ProjectEntryFields = {
 	description?: string;
 	link?: string;
 
-	asset?: ContentfulAsset;
+	featuredAsset?: ContentfulAsset;
+	assets?: Array<ContentfulAsset>;
 	tags?: Array<ContentfulEntry<TagEntryFields>>;
 	sections?: Array<ContentfulEntry<SectionEntryFields>>;
 };
@@ -63,6 +64,7 @@ export const SECTION_TYPES = {
 	About: 'About',
 	FeaturedProjects: 'FeaturedProjects',
 	ProjectsExplorer: 'ProjectsExplorer',
+	SideBySide: 'SideBySide',
 } as const;
 
 export type SectionType = (typeof SECTION_TYPES)[keyof typeof SECTION_TYPES];
