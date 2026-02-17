@@ -1,4 +1,5 @@
 import type { ContentfulEntry, SectionEntryFields, ExperienceEntryFields, ProjectEntryFields } from '@/types/cms/contentful';
+import styles from './styles/sectionRenderer.module.css';
 import { SECTION_TYPES } from '@/types/cms/contentful';
 import type { SectionRendererProps } from '@/types/content';
 
@@ -10,7 +11,14 @@ import SideBySide from '@/components/sections/SideBySide/SideBySide';
 import Slider from '@/components/sections/Slider/Slider';
 
 export default function SectionRenderer({ sections, externalLink }: SectionRendererProps) {
-	if (!sections?.length) return null;
+	if (!sections?.length)
+		return (
+			<p
+				role='status'
+				className={styles.noSections}>
+				No sections to display.
+			</p>
+		);
 
 	const renderSection = (section: ContentfulEntry<SectionEntryFields>, index: number) => {
 		const { sys, fields } = section;

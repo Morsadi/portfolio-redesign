@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './projectDetail.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +8,8 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { getProjectBySlug } from '@/lib/contentful/contentful';
 
 import TagLinks from '@/components/ui/TagLinks/TagLinks';
+
+import { getAssetAlt, getAssetUrl } from '@/lib/contentful/helpers';
 
 import SectionRenderer from '@/components/layout/SectionRenderer';
 
@@ -69,6 +72,7 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 					</div>
 				</section>
 			)}
+			{/* if not sections, displaye a fullwidth featured image */}
 			{fields.sections?.length ? (
 				<div className={styles.projectSections}>
 					<SectionRenderer
@@ -76,7 +80,23 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 						externalLink={websiteUrl}
 					/>
 				</div>
-			) : null}
+			) : (
+				fields.featuredAsset && (
+					<div
+						data-img-container
+						className={styles.featuredImage}>
+						<Image
+							src={getAssetUrl(fields.featuredAsset) || ''}
+							alt={getAssetAlt(fields.featuredAsset, fields.title)}
+							width={1920}
+							height={1080}
+							sizes='100vw'
+							className={styles.image}
+							priority
+						/>
+					</div>
+				)
+			)}
 		</article>
 	);
 }
