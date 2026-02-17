@@ -9,7 +9,7 @@
 	margin-bottom: var(--widget-margin-bottom);
 
 	.sectionHeader {
-		padding-inline: 20px;
+		padding-inline: 10px;
 		max-width: var(--body-max-width);
 		margin: 0 auto;
 		text-align: center;
