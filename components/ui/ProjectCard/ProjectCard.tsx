@@ -63,7 +63,7 @@ export default function ProjectCard({ project, projectBasePath = '/projects', bu
 							width={CARD_IMAGE_WIDTH}
 							height={CARD_IMAGE_HEIGHT}
 							className={styles.cardImage}
-							sizes='(min-width: 1024px) 500px, 100vw'
+							sizes='(min-width: 1550px) 500px, (min-width: 1024px) calc(calc(100vw - 40px) / 3), (min-width: 640px) calc(calc(100vw - 40px) / 2), calc(100vw - 20px)'
 							aria-hidden='true'
 						/>
 					) : (
