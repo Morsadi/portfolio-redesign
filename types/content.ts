@@ -1,4 +1,4 @@
-import { ContentfulAsset, ExperienceEntryFields, ContentfulEntry, ProjectEntryFields, TagEntryFields } from './cms/contentful';
+import { ContentfulAsset, ExperienceEntryFields, ContentfulEntry, ProjectEntryFields, TagEntryFields, SectionEntryFields } from './cms/contentful';
 
 export type HeroFields = {
 	title: string;
@@ -51,4 +51,18 @@ export type SideBySideProps = {
 	title?: string;
 	description?: string;
 	asset?: ContentfulAsset;
+};
+
+export type SliderProps = {
+	title?: string;
+	description?: string;
+	websiteUrl?: string;
+	assets: ContentfulAsset[];
+	ariaLabel?: string;
+	className?: string;
+};
+
+export type SectionRendererProps = {
+	sections: Array<ContentfulEntry<SectionEntryFields>>;
+	externalLink?: string;
 };

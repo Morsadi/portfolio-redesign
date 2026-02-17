@@ -156,12 +156,14 @@ h6 {
 h1 {
 	font-size: 4.375rem;
 	line-height: 1;
+	max-width: 15ch;
 }
 
 h2 {
 	font-size: 4rem;
 	line-height: 1;
 	margin-bottom: 20px;
+	max-width: 15ch;
 }
 
 h3 {

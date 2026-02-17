@@ -24,6 +24,8 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 
 	const titleId = `project-${sys.id}-title`;
 
+	const websiteUrl = fields.link;
+
 	return (
 		<article
 			className={styles.projectDetail}
@@ -43,7 +45,6 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 				/>
 				{fields.intro ? <p className={styles.introMessage}>{fields.intro}</p> : null}
 			</header>
-
 			{fields.overview && (
 				<section
 					aria-labelledby='project-overview-heading'
@@ -55,10 +56,10 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 
 						{fields.overview && <p>{fields.overview}</p>}
 
-						{fields.link && (
+						{websiteUrl && (
 							<Link
 								data-underlined-link
-								href={fields.link}
+								href={websiteUrl}
 								target='_blank'
 								rel='noopener noreferrer'
 								aria-label={`${websiteCaption} (opens in a new tab)`}>
@@ -68,14 +69,14 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 					</div>
 				</section>
 			)}
-
 			{fields.sections?.length ? (
 				<div className={styles.projectSections}>
-					<SectionRenderer sections={fields.sections} />
+					<SectionRenderer
+						sections={fields.sections}
+						externalLink={websiteUrl}
+					/>
 				</div>
 			) : null}
-
-			{/* ---- TODO: Glide slide ---- */}
 		</article>
 	);
 }

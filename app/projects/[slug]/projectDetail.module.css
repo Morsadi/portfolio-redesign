@@ -1,7 +1,5 @@
 .projectDetail {
 	margin-top: var(--widget-margin-bottom);
-	--hyperlink-color: var(--background);
-	--hyperlink-color-hover: var(--foreground);
 	--content-max-width: 1190px;
 
 	.imgContainer {
@@ -53,6 +51,9 @@
 	}
 
 	.overviewSection {
+		--hyperlink-color: var(--background);
+		--hyperlink-color-hover: var(--foreground);
+
 		background-color: var(--foreground);
 		color: var(--background);
 		padding: 60px 20px 80px;
@@ -75,5 +76,6 @@
 	/* sections */
 	.projectSections {
 		display: grid;
+		grid-template-columns: 100%;
 	}
 }
