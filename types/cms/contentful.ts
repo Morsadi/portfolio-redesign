@@ -21,6 +21,7 @@ export type ContentfulAsset = Asset;
 
 export type TagEntryFields = {
 	name: string;
+	slug: string;
 };
 
 /* -------------------------------------------------------------------------------------------------
@@ -33,7 +34,6 @@ export type ExperienceEntryFields = {
 	startDate: string;
 	endDate?: string;
 	description?: string;
-	body?: any; // TODO: type for rich text content
 };
 
 /* -------------------------------------------------------------------------------------------------
@@ -43,10 +43,13 @@ export type ExperienceEntryFields = {
 export type ProjectEntryFields = {
 	title: string;
 	slug: string;
-
-	summary?: string;
-	asset?: ContentfulAsset;
-
+	intro?: string;
+	overview?: string;
+	description?: string;
+	link?: string;
+	// Reference fields
+	featuredAsset?: ContentfulAsset;
+	assets?: Array<ContentfulAsset>;
 	tags?: Array<ContentfulEntry<TagEntryFields>>;
 	sections?: Array<ContentfulEntry<SectionEntryFields>>;
 };
@@ -59,6 +62,9 @@ export const SECTION_TYPES = {
 	IntroPanel: 'IntroPanel',
 	About: 'About',
 	FeaturedProjects: 'FeaturedProjects',
+	ProjectsExplorer: 'ProjectsExplorer',
+	SideBySide: 'SideBySide',
+	Slider: 'Slider',
 } as const;
 
 export type SectionType = (typeof SECTION_TYPES)[keyof typeof SECTION_TYPES];
@@ -71,14 +77,14 @@ export type SectionTypeEntryFields = {
 export type SectionItemsEntry = ContentfulEntry<ProjectEntryFields> | ContentfulEntry<ExperienceEntryFields> | ContentfulEntry<SectionEntryFields>;
 
 export type SectionEntryFields = {
+	key?: string;
 	type: ContentfulEntry<SectionTypeEntryFields>;
 	title?: string;
 	subtitle?: string;
 	description?: string;
-
-	body?: any; // TODO: type for rich text content
-
-	asset?: Array<ContentfulAsset>;
+	isHomepage?: boolean;
+	// Reference fields
+	assets?: Array<ContentfulAsset>;
 	items?: Array<SectionItemsEntry>;
 };
 
@@ -89,11 +95,9 @@ export type SectionEntryFields = {
 export type PageEntryFields = {
 	title: string;
 	slug: string;
-
 	thumbnail?: ContentfulAsset;
-
 	seoTitle?: string;
 	seoDescription?: string;
-
+	// Reference fields
 	sections?: Array<ContentfulEntry<SectionEntryFields>>;
 };

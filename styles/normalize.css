@@ -327,7 +327,7 @@ details {
  * Add the correct display in all browsers.
  */
 
-summary {
+description {
 	display: list-item;
 }
 

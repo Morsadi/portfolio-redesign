@@ -6,22 +6,22 @@ import styles from './styles/hero.module.css';
 
 type HeroProps = HeroFields;
 
-export default function Hero({ title, description, asset, variant = 'homepage' }: HeroProps) {
+export default function Hero({ title, description, asset, isHomepage }: HeroProps) {
 	const imgLink = asset?.fields?.file.url ? `https:${asset.fields.file.url}` : '';
 
 	return (
-		<section className={styles.hero + ` ${styles[variant]}`}>
+		<section className={styles.hero + ` ${styles[isHomepage ? 'homepage' : 'interior']}`}>
 			<div className={styles.contentSection}>
 				{title && <h1 className={styles.title}>{title}</h1>}
 				{description && <p className={styles.description}>{description}</p>}
-				{variant === 'homepage' && (
+				{isHomepage && (
 					<CopyButton
 						caption='bmorsadi@gmail.com'
 						extraClassName={styles.copyButton}
 					/>
 				)}
 			</div>
-			{variant === 'homepage' && imgLink && (
+			{isHomepage && imgLink && (
 				<div className={styles.imgContainer}>
 					<Image
 						src={imgLink}

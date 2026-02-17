@@ -1,7 +1,17 @@
-export default function Projects() {
+import { notFound } from 'next/navigation';
+import { getPageBySlug } from '@/lib/contentful/contentful';
+import SectionRenderer from '@/components/layout/SectionRenderer';
+
+export default async function Projects() {
+	const page = await getPageBySlug('projects');
+
+	if (!page) notFound();
+
+	const sections = page.fields.sections ?? [];
+
 	return (
-		<div>
-			<h1>Projects</h1>
-		</div>
+		<main aria-label='Projects'>
+			<SectionRenderer sections={sections} />
+		</main>
 	);
 }
