@@ -105,7 +105,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
 
 	const project = await getProjectBySlug(slug);
 
-	if (!project) notFound();
+	if (!project)
+		return (
+			<section className={styles.notFound}>
+				<h1 className={styles.title}>Project not found</h1>
+			</section>
+		);
 
 	return <ProjectDetail project={project} />;
 }

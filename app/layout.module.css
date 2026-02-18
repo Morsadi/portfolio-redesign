@@ -6,3 +6,20 @@
 	min-height: 100%;
 	overflow-y: hidden;
 }
+
+.notFound {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	gap: 20px;
+	min-height: 70vh;
+
+	.actions {
+		justify-content: center;
+		gap: 20px;
+		display: flex;
+		text-transform: uppercase;
+	}
+}
