@@ -16,9 +16,32 @@ const inter = Inter({
 	weight: ['400', '500', '600', '700', '900'],
 });
 
+const defaultMetaTitle = 'Badr Morsadi | Software Developer';
+const defaultMetaDescription = 'Front-end developer building data-driven applications with React, Vue, and Next.js.';
+
 export const metadata: Metadata = {
-	title: 'Badr Morsadi',
-	description: 'A web developer portfolio showcasing projects and skills.',
+	metadataBase: new URL('https://badrmorsadi.com'),
+	title: {
+		default: 'Badr Morsadi | Software Developer',
+		template: '%s | Badr Morsadi | Software Developer, IoT Enthusiast',
+	},
+	description: defaultMetaDescription,
+	openGraph: {
+		siteName: defaultMetaTitle,
+		type: 'website',
+		title: defaultMetaTitle,
+		description: defaultMetaDescription,
+		url: 'https://badrmorsadi.com',
+		images: [
+			{
+				url: '/profile.png',
+			},
+		],
+		locale: 'en_US',
+	},
+	twitter: {
+		card: 'summary_large_image',
+	},
 };
 
 export default function RootLayout({

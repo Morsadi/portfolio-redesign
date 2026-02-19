@@ -1,23 +1,34 @@
-import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './projectDetail.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { getProjectBySlug } from '@/lib/contentful/contentful';
-
+import SectionRenderer from '@/components/layout/SectionRenderer';
 import TagLinks from '@/components/ui/TagLinks/TagLinks';
 
+import { getProjectBySlug } from '@/lib/contentful/contentful';
 import { getAssetAlt, getAssetUrl } from '@/lib/contentful/helpers';
-
-import SectionRenderer from '@/components/layout/SectionRenderer';
+import { getProjectBySlugCached } from '@/lib/contentful/projects';
+import { buildProjectMetadata } from '@/lib/seo/buildProjectMetadata';
 
 import type { ContentfulEntry, ProjectEntryFields } from '@/types/cms/contentful';
 
-type PageProps = {
+type ParamsProps = {
 	params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: ParamsProps): Promise<Metadata> {
+	const { slug } = await params;
+	const project = await getProjectBySlugCached(slug);
+
+	if (!project) {
+		return { title: 'Project Not Found' };
+	}
+
+	return buildProjectMetadata(project.fields);
+}
 
 const overviewCaption = 'Overview';
 const websiteCaption = 'View Website';
@@ -100,7 +111,7 @@ function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryField
 		</article>
 	);
 }
-export default async function ProjectDetailPage({ params }: PageProps) {
+export default async function ProjectDetailPage({ params }: ParamsProps) {
 	const { slug } = await params;
 
 	const project = await getProjectBySlug(slug);
