@@ -42,7 +42,7 @@ export default function SideBySide({ subtitle, title, description, asset, id, in
 							alt={imgAlt}
 							width={IMAGE_WIDTH}
 							height={IMAGE_HEIGHT}
-							sizes='(min-width: 1280px) 600px, (min-width: 640px) 55vw, calc(100vw - 20px)'
+							sizes='(min-width: 1280px) 600px, (min-width: 1024px) 55vw, calc(100vw - 20px)'
 							className={styles.image}
 						/>
 					) : (
