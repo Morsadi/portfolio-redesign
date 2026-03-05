@@ -74,6 +74,12 @@
 		.projectDetail:not(:has(.featuredImage)) & {
 			margin-bottom: var(--widget-margin-bottom);
 		}
+
+		@media (min-width: 64em) {
+			& {
+				padding-inline: 20px;
+			}
+		}
 	}
 
 	/* sections */

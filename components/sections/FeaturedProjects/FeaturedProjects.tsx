@@ -4,9 +4,7 @@ import type { FeaturedProjectsFields } from '@/types/content';
 import ProjectCard from '@/components/ui/ProjectCard/ProjectCard';
 
 export default function FeaturedProjects({ id, title = 'Featured Work', items }: FeaturedProjectsFields) {
-	const projects = items ?? [];
-
-	if (!projects.length) return <p className={styles.noProjects}>No projects to display.</p>;
+	const projects = items.filter((project) => project.fields) ?? [];
 
 	return (
 		<section
@@ -18,6 +16,8 @@ export default function FeaturedProjects({ id, title = 'Featured Work', items }:
 				className={styles.title}>
 				{title}
 			</h2>
+
+			{projects.length === 0 ? <p className={styles.noProjects}>No projects to display.</p> : null}
 
 			<ul
 				className={styles.projectsContainer}

@@ -50,7 +50,16 @@ export default function About({ title, subtitle, description, experiences }: Abo
 									aria-label={`Experience at ${exp.company} as ${exp.role}`}>
 									<div className={styles.expHeader}>
 										{exp.company && <h3 className={styles.company}>{exp.company}</h3>}
-										{exp.role && <p className={styles.expSubtitle}>{exp.role}</p>}
+										{exp.role && (
+											<h4 className={styles.role}>
+												{exp.role.split(', ').map((role, i) => (
+													<span key={i}>
+														{i > 0 && '& '} {role}
+														<br />
+													</span>
+												))}
+											</h4>
+										)}
 									</div>
 									{exp.description ? <p className={styles.expDescription}>{exp.description}</p> : null}
 								</div>

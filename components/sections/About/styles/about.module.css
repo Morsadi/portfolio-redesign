@@ -53,6 +53,9 @@
 	}
 
 	@media (min-width: 40em) {
+		.experienceGrid {
+			align-items: baseline;
+		}
 		.experienceGrid,
 		.sectionContent {
 			grid-template-columns: 0.8fr 1fr;

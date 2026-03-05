@@ -55,7 +55,7 @@ export default function SectionRenderer({ sections, externalLink }: SectionRende
 						key={sys.id}
 						id={sys.id}
 						title={title ?? ''}
-						items={items as Array<ContentfulEntry<ProjectEntryFields>>}
+						items={(items as Array<ContentfulEntry<ProjectEntryFields>>) ?? []}
 					/>
 				);
 

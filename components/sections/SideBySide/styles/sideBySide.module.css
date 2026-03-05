@@ -7,6 +7,7 @@
 	.inner {
 		display: grid;
 		gap: 10px;
+		align-items: center;
 
 		.contentSection {
 			display: grid;
@@ -16,21 +17,28 @@
 			.subtitle {
 				font-size: 0.9rem;
 				font-weight: 600;
+				text-transform: uppercase;
+				margin-bottom: 5px;
 			}
 			& h2 {
 				margin-bottom: 12px;
 				font-size: 2rem;
+				max-width: unset;
 			}
 		}
 
 		.imgContainer {
 			order: -1;
+			box-shadow: 0 0 7px 1px #00000033;
 		}
 	}
 
 	@media (min-width: 64em) {
+		& {
+			padding-inline: 20px;
+		}
 		.inner {
-			gap: 40px;
+			gap: 50px;
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 
 			.contentSection {
@@ -46,7 +54,7 @@
 				}
 
 				.subtitle {
-					font-size: 1rem;
+					font-size: 1.2rem;
 				}
 
 				& h2 {

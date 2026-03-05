@@ -132,6 +132,7 @@ button {
 p {
 	font-size: 1.25rem;
 	line-height: 1.5;
+	white-space: break-spaces;
 
 	a {
 		text-decoration: underline;

@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: ParamsProps): Promise<Metadat
 }
 
 const overviewCaption = 'Overview';
-const websiteCaption = 'View Website';
+const websiteCaption = 'View Project';
 
 function ProjectDetail({ project }: { project: ContentfulEntry<ProjectEntryFields> }) {
 	const { fields, sys } = project;
