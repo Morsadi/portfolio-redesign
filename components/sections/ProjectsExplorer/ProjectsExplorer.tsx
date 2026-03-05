@@ -1,3 +1,5 @@
+// suspense
+import { Suspense } from 'react';
 import styles from './styles/projectExplorer.module.css';
 import ProjectExplorerClient from './ProjectExplorerClient';
 
@@ -25,11 +27,13 @@ export default async function ProjectExplorer({ id, title }: ProjectExplorerProp
 				</h2>
 			) : null}
 
-			<ProjectExplorerClient
-				sectionId={id}
-				projects={projects}
-				tagOptions={tagOptions}
-			/>
+			<Suspense fallback={<div>Loading...</div>}>
+				<ProjectExplorerClient
+					sectionId={id}
+					projects={projects}
+					tagOptions={tagOptions}
+				/>
+			</Suspense>
 		</section>
 	);
 }

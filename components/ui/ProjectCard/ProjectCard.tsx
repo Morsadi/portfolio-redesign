@@ -14,7 +14,6 @@ const CARD_IMAGE_HEIGHT = 345;
 
 export default function ProjectCard({ project, projectBasePath = '/projects', buttonCaption = 'Learn More' }: ProjectCardProps) {
 	const { fields, sys } = project;
-	console.log(fields);
 
 	if (!fields) return null;
 
