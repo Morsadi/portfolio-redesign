@@ -16,16 +16,32 @@ const inter = Inter({
 	weight: ['400', '500', '600', '700', '900'],
 });
 
-const defaultMetaTitle = 'Badr Morsadi | Software Developer';
-const defaultMetaDescription = 'Front-end developer building data-driven applications with React, Vue, and Next.js.';
+const defaultMetaTitle = 'Badr Morsadi | Software Engineer';
+const defaultMetaDescription = 'Software engineer building data-driven interfaces, modern web platforms, and interactive systems that connect software with real-world data.';
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://badrmorsadi.com'),
+
 	title: {
-		default: 'Badr Morsadi | Software Developer',
-		template: '%s | Badr Morsadi | Software Developer, IoT Enthusiast',
+		default: defaultMetaTitle,
+		template: '%s | Badr Morsadi',
 	},
+
 	description: defaultMetaDescription,
+
+	keywords: [
+		'Badr Morsadi',
+		'Software Engineer',
+		'Frontend Engineer',
+		'Next.js Developer',
+		'React Developer',
+		'Web Applications',
+		'Data Interfaces',
+		'CMS Architecture',
+		'IoT Dashboards',
+		'Phoenix Software Developer',
+	],
+
 	openGraph: {
 		siteName: defaultMetaTitle,
 		type: 'website',
@@ -35,13 +51,23 @@ export const metadata: Metadata = {
 		images: [
 			{
 				url: '/profile.png',
+				width: 1200,
+				height: 630,
+				alt: 'Badr Morsadi portfolio',
 			},
 		],
 		locale: 'en_US',
 	},
+
 	twitter: {
 		card: 'summary_large_image',
+		title: defaultMetaTitle,
+		description: defaultMetaDescription,
+		images: ['/profile.png'],
 	},
+
+	authors: [{ name: 'Badr Morsadi', url: 'https://badrmorsadi.com' }],
+	creator: 'Badr Morsadi',
 };
 
 export default function RootLayout({
