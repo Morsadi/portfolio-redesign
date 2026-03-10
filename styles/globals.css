@@ -46,7 +46,6 @@ body {
 	background: var(--background);
 	font-family: var(--font-primary);
 
-	& > div > header,
 	& > div > main:not([data-projectDetails='true']),
 	& > div > footer {
 		margin-inline: auto;
@@ -54,9 +53,6 @@ body {
 		width: 100%;
 		padding-inline: 10px;
 
-		&header {
-			max-width: 1720px;
-		}
 		@media (min-width: 40em) {
 			& {
 				padding-inline: 20px;

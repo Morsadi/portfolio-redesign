@@ -1,5 +1,4 @@
 .projectDetail {
-	margin-top: var(--widget-margin-bottom);
 	--content-max-width: 1190px;
 
 	.imgContainer {
@@ -39,7 +38,10 @@
 		}
 	}
 
-	@media (min-width: 40em) {
+	@media (min-width: 48em) {
+		& {
+			margin-top: 120px;
+		}
 		.imgContainer {
 			height: 400px;
 		}
