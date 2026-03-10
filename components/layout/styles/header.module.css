@@ -1,11 +1,22 @@
 .header {
 	z-index: 9999;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	justify-content: space-between;
-	align-items: center;
 	background-color: var(--background);
 	padding: 20px 10px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	box-shadow: 0 1px 14px 0px #00000021;
+
+	.headerInner {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		max-width: 1720px;
+		margin-inline: auto;
+	}
 
 	.navLink {
 		text-transform: uppercase;
