@@ -1,4 +1,5 @@
 import { ContentfulAsset, ExperienceEntryFields, ContentfulEntry, ProjectEntryFields, TagEntryFields, SectionEntryFields } from './cms/contentful';
+import type { Document } from '@contentful/rich-text-types';
 
 export type HeroFields = {
 	title: string;
@@ -51,6 +52,7 @@ export type SideBySideProps = {
 	title?: string;
 	description?: string;
 	asset?: ContentfulAsset;
+	body?: Document;
 };
 
 export type SliderProps = {

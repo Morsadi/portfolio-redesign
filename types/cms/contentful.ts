@@ -1,4 +1,5 @@
 import type { Asset } from 'contentful';
+import { Document } from '@contentful/rich-text-types';
 
 /* -------------------------------------------------------------------------------------------------
  * Contentful primitives
@@ -86,6 +87,7 @@ export type SectionEntryFields = {
 	// Reference fields
 	assets?: Array<ContentfulAsset>;
 	items?: Array<SectionItemsEntry>;
+	body?: Document;
 };
 
 /* -------------------------------------------------------------------------------------------------

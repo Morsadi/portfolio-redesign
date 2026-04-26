@@ -22,7 +22,7 @@ export default function SectionRenderer({ sections, externalLink }: SectionRende
 
 	const renderSection = (section: ContentfulEntry<SectionEntryFields>, index: number) => {
 		const { sys, fields } = section;
-		const { type, title, subtitle, description, assets, isHomepage, items } = fields;
+		const { type, title, subtitle, description, assets, isHomepage, items, body } = fields;
 
 		const sectionType = type?.fields?.type;
 
@@ -76,8 +76,9 @@ export default function SectionRenderer({ sections, externalLink }: SectionRende
 						index={index}
 						subtitle={subtitle ?? ''}
 						title={title ?? ''}
-						description={description}
+						description={description ?? ''}
 						asset={assets?.[0]}
+						body={body}
 					/>
 				);
 
