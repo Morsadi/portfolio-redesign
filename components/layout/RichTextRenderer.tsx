@@ -23,7 +23,7 @@ const RichTextRenderer = ({ content }: Props) => {
 					);
 				}
 
-				return <p className={styles.p}>{children}</p>;
+				return <p>{children}</p>;
 			},
 
 			[INLINES.HYPERLINK]: (node, children) => {
