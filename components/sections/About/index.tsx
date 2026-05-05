@@ -9,7 +9,9 @@ export default function About({ title, subtitle, description, experiences }: Abo
 		<section
 			className={styles.aboutSection}
 			aria-labelledby={headingId}>
-			<RevealOnView className={styles.sectionHeader}>
+			<RevealOnView
+				as='header'
+				className={styles.sectionHeader}>
 				{title && (
 					<h2
 						id={headingId}
