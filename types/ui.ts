@@ -1,4 +1,4 @@
-import { type ElementType, type ReactNode } from 'react';
+import { type CSSProperties, type ElementType, type ReactNode } from 'react';
 export interface ButtonProps {
 	caption: string;
 	linkToCopy?: string;
@@ -14,4 +14,6 @@ export type RevealOnViewProps = {
 	rootMargin?: string;
 	once?: boolean;
 	ariaLabel?: string;
+	key?: string;
+	style?: CSSProperties;
 };
