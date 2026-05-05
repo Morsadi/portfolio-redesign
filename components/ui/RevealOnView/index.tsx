@@ -9,7 +9,7 @@ export const RevealOnView = ({
 	as: Component = 'div',
 	className = '',
 	activeClassName = styles.active,
-	threshold = 0.25,
+	threshold = 0.2,
 	rootMargin = '0px 0px -10% 0px',
 	once = true,
 	ariaLabel,

@@ -6,6 +6,8 @@ import { getAssetAlt, getAssetUrl } from '@/lib/contentful/helpers';
 import type { SideBySideProps } from '@/types/content';
 import RichTextRenderer from '@/components/layout/RichTextRenderer';
 
+import RevealOnView from '@/components/ui/RevealOnView';
+
 const IMAGE_WIDTH = 1200;
 
 export default function SideBySide({ subtitle, title, description, asset, id, index = 0, body }: SideBySideProps) {
@@ -17,9 +19,10 @@ export default function SideBySide({ subtitle, title, description, asset, id, in
 	const isReversed = index % 2 === 1;
 
 	return (
-		<section
+		<RevealOnView
 			className={`${styles.sideBySide} ${isReversed ? styles.reversed : ''}`}
-			aria-labelledby={headingId}>
+			as='section'
+			ariaLabel={headingId}>
 			<div className={styles.inner}>
 				<div className={styles.contentSection}>
 					{subtitle && subtitle?.trim() ? <p className={styles.subtitle}>{subtitle.trim()}</p> : null}
@@ -59,6 +62,6 @@ export default function SideBySide({ subtitle, title, description, asset, id, in
 					)}
 				</div>
 			</div>
-		</section>
+		</RevealOnView>
 	);
 }
