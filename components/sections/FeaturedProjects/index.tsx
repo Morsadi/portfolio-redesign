@@ -1,7 +1,10 @@
+import type { CSSProperties } from 'react';
 import styles from './styles/featuredProjects.module.css';
 
 import type { FeaturedProjectsFields } from '@/types/content';
 import ProjectCard from '@/components/ui/ProjectCard';
+
+import RevealOnView from '@/components/ui/RevealOnView';
 
 export default function FeaturedProjects({ id, title = 'Featured Work', items }: FeaturedProjectsFields) {
 	const projects = items.filter((project) => project.fields) ?? [];
@@ -22,12 +25,14 @@ export default function FeaturedProjects({ id, title = 'Featured Work', items }:
 			<ul
 				className={styles.projectsContainer}
 				aria-label='Featured projects'>
-				{projects.map((project) => (
-					<li
+				{projects.map((project, index) => (
+					<RevealOnView
 						key={project.sys.id}
-						className={styles.projectItem}>
+						className={styles.projectItem}
+						as='li'
+						style={{ '--reveal-delay': `${index * 120}ms` } as CSSProperties}>
 						<ProjectCard project={project} />
-					</li>
+					</RevealOnView>
 				))}
 			</ul>
 		</section>

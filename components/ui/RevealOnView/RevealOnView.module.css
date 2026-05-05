@@ -5,8 +5,13 @@
 		opacity 600ms ease-in,
 		transform 600ms ease-in;
 
-	transition-delay: var(--reveal-delay, 0ms);
 	will-change: opacity, transform;
+
+	@media (min-width: 64em) {
+		& {
+			transition-delay: var(--reveal-delay, 0ms);
+		}
+	}
 }
 
 .active {

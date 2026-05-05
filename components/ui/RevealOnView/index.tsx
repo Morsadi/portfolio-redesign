@@ -13,7 +13,6 @@ export const RevealOnView = ({
 	rootMargin = '0px 0px -10% 0px',
 	once = true,
 	ariaLabel,
-	key,
 	style,
 }: RevealOnViewProps) => {
 	const elementRef = useRef<HTMLElement | null>(null);
@@ -55,7 +54,6 @@ export const RevealOnView = ({
 			className={`${styles.reveal} ${isActive ? activeClassName : ''} ${className}`}
 			aria-label={ariaLabel}
 			data-active={isActive}
-			key={key}
 			style={style}>
 			{children}
 		</Component>
