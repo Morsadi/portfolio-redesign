@@ -1,5 +1,5 @@
 'use client';
-import CopyButton from '@/components/ui/CopyButton/CopyButton';
+import CopyButton from '@/components/ui/CopyButton';
 
 import styles from './styles/footer.module.css';
 import SocialIcons from './SocialIcons';

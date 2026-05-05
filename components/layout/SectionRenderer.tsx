@@ -3,12 +3,12 @@ import styles from './styles/sectionRenderer.module.css';
 import { SECTION_TYPES } from '@/types/cms/contentful';
 import type { SectionRendererProps } from '@/types/content';
 
-import Hero from '@/components/sections/Hero/Hero';
-import About from '@/components/sections/About/About';
-import FeaturedProjects from '@/components/sections/FeaturedProjects/FeaturedProjects';
-import ProjectExplorer from '@/components/sections/ProjectsExplorer/ProjectsExplorer';
-import SideBySide from '@/components/sections/SideBySide/SideBySide';
-import Slider from '@/components/sections/Slider/Slider';
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import FeaturedProjects from '@/components/sections/FeaturedProjects';
+import ProjectExplorer from '@/components/sections/ProjectsExplorer';
+import SideBySide from '@/components/sections/SideBySide';
+import Slider from '@/components/sections/Slider';
 
 export default function SectionRenderer({ sections, externalLink }: SectionRendererProps) {
 	if (!sections?.length)

@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import styles from './styles/projectExplorer.module.css';
-import ProjectCard from '@/components/ui/ProjectCard/ProjectCard';
+import ProjectCard from '@/components/ui/ProjectCard';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faCirclePlus } from '@fortawesome/free-solid-svg-icons';

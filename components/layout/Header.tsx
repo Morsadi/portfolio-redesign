@@ -3,7 +3,7 @@
 import styles from './styles/header.module.css';
 import Logo from './logo';
 import Navigation from './Navigation';
-import CopyButton from '@/components/ui/CopyButton/CopyButton';
+import CopyButton from '@/components/ui/CopyButton';
 
 export default function Header() {
 	return (

@@ -1,7 +1,7 @@
 import styles from './styles/featuredProjects.module.css';
 
 import type { FeaturedProjectsFields } from '@/types/content';
-import ProjectCard from '@/components/ui/ProjectCard/ProjectCard';
+import ProjectCard from '@/components/ui/ProjectCard';
 
 export default function FeaturedProjects({ id, title = 'Featured Work', items }: FeaturedProjectsFields) {
 	const projects = items.filter((project) => project.fields) ?? [];
