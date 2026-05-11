@@ -4,11 +4,13 @@ import styles from './styles/sideBySide.module.css';
 import { getAssetAlt, getAssetUrl } from '@/lib/contentful/helpers';
 
 import type { SideBySideProps } from '@/types/content';
+import RichTextRenderer from '@/components/layout/RichTextRenderer';
+
+import RevealOnView from '@/components/ui/RevealOnView';
 
 const IMAGE_WIDTH = 1200;
-const IMAGE_HEIGHT = 686;
 
-export default function SideBySide({ subtitle, title, description, asset, id, index = 0 }: SideBySideProps) {
+export default function SideBySide({ subtitle, title, description, asset, id, index = 0, body }: SideBySideProps) {
 	const headingId = `side-by-side-${id}-title`;
 
 	const imgUrl = getAssetUrl(asset);
@@ -17,9 +19,10 @@ export default function SideBySide({ subtitle, title, description, asset, id, in
 	const isReversed = index % 2 === 1;
 
 	return (
-		<section
+		<RevealOnView
 			className={`${styles.sideBySide} ${isReversed ? styles.reversed : ''}`}
-			aria-labelledby={headingId}>
+			as='section'
+			ariaLabel={headingId}>
 			<div className={styles.inner}>
 				<div className={styles.contentSection}>
 					{subtitle && subtitle?.trim() ? <p className={styles.subtitle}>{subtitle.trim()}</p> : null}
@@ -31,7 +34,13 @@ export default function SideBySide({ subtitle, title, description, asset, id, in
 						</h2>
 					)}
 
-					{description && description?.trim() ? <p className={styles.description}>{description.trim()}</p> : null}
+					{body ? (
+						<div className={styles.richTextContainer}>
+							<RichTextRenderer content={body} />
+						</div>
+					) : description?.trim() ? (
+						<p className={styles.description}>{description.trim()}</p>
+					) : null}
 				</div>
 				<div
 					data-img-container
@@ -41,9 +50,9 @@ export default function SideBySide({ subtitle, title, description, asset, id, in
 							src={imgUrl}
 							alt={imgAlt}
 							width={IMAGE_WIDTH}
-							height={IMAGE_HEIGHT}
-							sizes='(min-width: 1280px) 600px, (min-width: 1024px) 55vw, calc(100vw - 20px)'
-							className={styles.image}
+							height={Math.round(IMAGE_WIDTH * 0.75)}
+							sizes='(min-width: 1280px) 700px, (min-width: 1024px) 60vw, 100vw'
+							quality={100}
 						/>
 					) : (
 						<div
@@ -53,6 +62,6 @@ export default function SideBySide({ subtitle, title, description, asset, id, in
 					)}
 				</div>
 			</div>
-		</section>
+		</RevealOnView>
 	);
 }

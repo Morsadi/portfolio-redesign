@@ -3,12 +3,12 @@ import styles from './styles/sectionRenderer.module.css';
 import { SECTION_TYPES } from '@/types/cms/contentful';
 import type { SectionRendererProps } from '@/types/content';
 
-import Hero from '@/components/sections/Hero/Hero';
-import About from '@/components/sections/About/About';
-import FeaturedProjects from '@/components/sections/FeaturedProjects/FeaturedProjects';
-import ProjectExplorer from '@/components/sections/ProjectsExplorer/ProjectsExplorer';
-import SideBySide from '@/components/sections/SideBySide/SideBySide';
-import Slider from '@/components/sections/Slider/Slider';
+import Hero from '@/components/sections/Hero';
+import About from '@/components/sections/About';
+import FeaturedProjects from '@/components/sections/FeaturedProjects';
+import ProjectExplorer from '@/components/sections/ProjectsExplorer';
+import SideBySide from '@/components/sections/SideBySide';
+import Slider from '@/components/sections/Slider';
 
 export default function SectionRenderer({ sections, externalLink }: SectionRendererProps) {
 	if (!sections?.length)
@@ -22,7 +22,7 @@ export default function SectionRenderer({ sections, externalLink }: SectionRende
 
 	const renderSection = (section: ContentfulEntry<SectionEntryFields>, index: number) => {
 		const { sys, fields } = section;
-		const { type, title, subtitle, description, assets, isHomepage, items } = fields;
+		const { type, title, subtitle, description, assets, isHomepage, items, body } = fields;
 
 		const sectionType = type?.fields?.type;
 
@@ -76,8 +76,9 @@ export default function SectionRenderer({ sections, externalLink }: SectionRende
 						index={index}
 						subtitle={subtitle ?? ''}
 						title={title ?? ''}
-						description={description}
+						description={description ?? ''}
 						asset={assets?.[0]}
+						body={body}
 					/>
 				);
 

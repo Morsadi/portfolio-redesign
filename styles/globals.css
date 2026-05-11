@@ -20,7 +20,7 @@
 	/* Body Styles */
 	--widget-margin-bottom: 80px;
 	--content-max-width: 1350px;
-	--body-max-width: 1550px;
+	--body-max-width: 1650px;
 	/* Tags */
 	--tag-bg-color: var(--foreground);
 	--tag-text-color: var(--background);
@@ -200,11 +200,5 @@ h6 {
 	}
 	h6 {
 		font-size: 1rem;
-	}
-}
-
-@media (min-width: 102rem) {
-	p {
-		font-size: 1.5rem;
 	}
 }

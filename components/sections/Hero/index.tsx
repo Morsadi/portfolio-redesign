@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import type { HeroFields } from '@/types/content';
-import CopyButton from '@/components/ui/CopyButton/CopyButton';
+import CopyButton from '@/components/ui/CopyButton';
 
 import styles from './styles/hero.module.css';
 

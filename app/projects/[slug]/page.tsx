@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 import SectionRenderer from '@/components/layout/SectionRenderer';
-import TagLinks from '@/components/ui/TagLinks/TagLinks';
+import TagLinks from '@/components/ui/TagLinks';
 
 import { getProjectBySlug } from '@/lib/contentful/contentful';
 import { getAssetAlt, getAssetUrl } from '@/lib/contentful/helpers';

@@ -1,10 +1,10 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { CSSProperties, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import styles from './styles/projectExplorer.module.css';
-import ProjectCard from '@/components/ui/ProjectCard/ProjectCard';
+import ProjectCard from '@/components/ui/ProjectCard';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,8 @@ import type { ContentfulEntry, ProjectEntryFields, TagEntryFields } from '@/type
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { TAGS_QUERY_KEY, parseTagsParam, serializeTagsParam } from '@/lib/contentful/tagQuery';
 import { getProjectTagSlugs } from '@/lib/contentful/helpers';
+
+import RevealOnView from '@/components/ui/RevealOnView';
 
 type ProjectExplorerClientProps = {
 	sectionId: string;
@@ -153,12 +155,14 @@ export default function ProjectExplorerClient({ sectionId, projects, tagOptions 
 			<ul
 				className={styles.projectsContainer}
 				aria-label='Projects'>
-				{filteredProjects.map((project) => (
-					<li
-						key={project.sys.id}
-						className={styles.projectItem}>
+				{filteredProjects.map((project, index) => (
+					<RevealOnView
+						key={`project-${project.sys.id}`}
+						className={styles.projectItem}
+						as='li'
+						style={{ '--reveal-delay': `${index * 120}ms` } as CSSProperties}>
 						<ProjectCard project={project} />
-					</li>
+					</RevealOnView>
 				))}
 			</ul>
 		</div>

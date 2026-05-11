@@ -1,5 +1,6 @@
 .projectDetail {
 	--content-max-width: 1190px;
+	padding-top: 150px;
 
 	.imgContainer {
 		position: relative;
@@ -26,10 +27,11 @@
 		.title {
 			text-align: center;
 			margin-bottom: 10px;
+			font-size: 3.2rem;
 		}
 
-		.projectTags {
-			justify-items: center;
+		.projectTags ul {
+			justify-content: center;
 		}
 
 		.introMessage {
@@ -45,10 +47,16 @@
 		.imgContainer {
 			height: 400px;
 		}
+		.detailHeader .title {
+			font-size: 5rem;
+		}
 	}
 	@media (min-width: 64em) {
 		.imgContainer {
 			height: 600px;
+		}
+		.detailHeader .title {
+			font-size: 8.75rem;
 		}
 	}
 

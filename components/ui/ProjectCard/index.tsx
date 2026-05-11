@@ -7,7 +7,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import type { ProjectCardProps } from '@/types/content';
 import { getAssetAlt, getAssetUrl } from '@/lib/contentful/helpers';
-import TagLinks from '../TagLinks/TagLinks';
+import TagLinks from '../TagLinks';
 
 const CARD_IMAGE_WIDTH = 605;
 const CARD_IMAGE_HEIGHT = 345;

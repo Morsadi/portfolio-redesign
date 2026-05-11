@@ -1,13 +1,17 @@
 import styles from './styles/about.module.css';
 import type { AboutFields } from '@/types/content';
 
+import RevealOnView from '@/components/ui/RevealOnView';
+
 export default function About({ title, subtitle, description, experiences }: AboutFields) {
 	const headingId = 'about-section-title';
 	return (
 		<section
 			className={styles.aboutSection}
 			aria-labelledby={headingId}>
-			<header className={styles.sectionHeader}>
+			<RevealOnView
+				as='header'
+				className={styles.sectionHeader}>
 				{title && (
 					<h2
 						id={headingId}
@@ -19,12 +23,12 @@ export default function About({ title, subtitle, description, experiences }: Abo
 					{subtitle && <p className={styles.subtitle}>{subtitle}</p>}
 					{description && <p className={styles.description}>{description}</p>}
 				</div>
-			</header>
+			</RevealOnView>
 
 			{experiences?.length ? (
 				<ul className={styles.experiences}>
 					{experiences.map(({ fields: exp, sys }) => (
-						<li
+						<RevealOnView
 							key={`${sys.id}`}
 							className={styles.experienceItem}>
 							<div className={styles.experienceGrid}>
@@ -64,7 +68,7 @@ export default function About({ title, subtitle, description, experiences }: Abo
 									{exp.description ? <p className={styles.expDescription}>{exp.description}</p> : null}
 								</div>
 							</div>
-						</li>
+						</RevealOnView>
 					))}
 				</ul>
 			) : null}
