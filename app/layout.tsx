@@ -6,6 +6,7 @@ import styles from './layout.module.css';
 
 import { Inter } from 'next/font/google';
 import '../styles/_index.css';
+import { Analytics } from '@vercel/analytics/next';
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -83,6 +84,7 @@ export default function RootLayout({
 					{children}
 					<Footer />
 				</div>
+				<Analytics />
 			</body>
 		</html>
 	);
