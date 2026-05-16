@@ -17,8 +17,8 @@ const inter = Inter({
 	weight: ['400', '500', '600', '700', '900'],
 });
 
-const defaultMetaTitle = 'Badr Morsadi | Software Engineer';
-const defaultMetaDescription = 'Software engineer building data-driven interfaces, modern web platforms, and interactive systems that connect software with real-world data.';
+const defaultMetaTitle = 'Badr Morsadi';
+const defaultMetaDescription = 'Software developer building data-driven interfaces, modern web platforms, and interactive systems that connect software with real-world data.';
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://badrmorsadi.com'),
