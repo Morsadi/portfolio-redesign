@@ -28,7 +28,7 @@ export default function TagLinks({ tags, basePath = '/projects', ariaLabel = 'Pr
 
 					if (!slug || !name) return null;
 
-					const href = `${basePath}?tags=${slug}`;
+					const href = `${basePath}?tags=${encodeURIComponent(slug)}`;
 
 					return (
 						<li
