@@ -182,12 +182,12 @@ h6 {
 	line-height: 1.2;
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 64em) {
 	h1 {
-		font-size: 8.75rem;
+		font-size: 7rem;
 	}
 	h2 {
-		font-size: 6.125rem;
+		font-size: 5rem;
 	}
 	h3 {
 		font-size: 2rem;
