@@ -20,7 +20,8 @@
 		gap: 20px;
 		min-width: 0;
 		order: 1;
-		align-content: start;
+		align-content: center;
+		justify-items: center;
 
 		& h1 {
 			font-size: 4rem;
