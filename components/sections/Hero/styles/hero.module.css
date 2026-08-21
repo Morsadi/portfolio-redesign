@@ -21,7 +21,7 @@
 		min-width: 0;
 		order: 1;
 		align-content: center;
-		justify-items: center;
+		justify-items: start;
 
 		& h1 {
 			font-size: 4rem;
@@ -37,6 +37,10 @@
 		grid-template-columns: minmax(0, 1fr);
 		text-align: center;
 		max-width: 980px;
+
+		.contentSection {
+			justify-items: center;
+		}
 	}
 
 	@media (min-width: 40em) {
