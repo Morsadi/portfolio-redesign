@@ -73,13 +73,6 @@
 						visibility var(--hover-transition),
 						text-decoration-color var(--hover-transition);
 
-					&.hidden {
-						visibility: hidden;
-						opacity: 0;
-						pointer-events: none;
-						margin-left: -112px;
-					}
-
 					& span {
 						font-size: 1.1rem;
 						line-height: 1;

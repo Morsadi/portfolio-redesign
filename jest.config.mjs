@@ -25,6 +25,7 @@ const customJestConfig = {
 		'^next/font/(.*)$': '<rootDir>/test/mocks/nextFontMock.js',
 		'^server-only$': '<rootDir>/test/mocks/empty.js',
 		'^next/image$': '<rootDir>/test/mocks/nextImage.tsx',
+		'^next/navigation$': '<rootDir>/test/mocks/nextNavigation.ts',
 	},
 	setupFilesAfterEnv: ['<rootDir>/test/setup.ts'],
 	testEnvironment: 'jsdom',
