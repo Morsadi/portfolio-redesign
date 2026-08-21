@@ -34,6 +34,7 @@ export default function ProjectCard({ project, projectBasePath = '/projects', bu
 
 				<TagLinks
 					tags={fields.tags}
+					ariaLabel={`Tags for ${fields.title}`}
 					className={styles.projectTags}
 				/>
 
@@ -44,7 +45,7 @@ export default function ProjectCard({ project, projectBasePath = '/projects', bu
 							data-underlined-link
 							href={`${projectBasePath}/${fields.slug}`}
 							className={styles.learnMoreLink}
-							aria-label={`View details`}>
+							aria-label={`Learn more about ${fields.title}`}>
 							{buttonCaption}
 							<FontAwesomeIcon
 								aria-hidden='true'
@@ -58,7 +59,7 @@ export default function ProjectCard({ project, projectBasePath = '/projects', bu
 				<Link
 					href={`${projectBasePath}/${fields.slug}`}
 					className={styles.imageLink}
-					aria-label={`View details`}>
+					aria-label={`View ${fields.title}`}>
 					{imgUrl ? (
 						<Image
 							src={imgUrl}
