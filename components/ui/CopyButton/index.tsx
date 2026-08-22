@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ButtonProps } from '@/types/ui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,14 @@ import styles from './copyButton.module.css';
 export default function CopyButton({ caption, linkToCopy = '', extraClassName }: ButtonProps) {
 	const [copied, setCopied] = useState(false);
 	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	useEffect(() => {
+		return () => {
+			if (timeoutRef.current) {
+				clearTimeout(timeoutRef.current);
+			}
+		};
+	}, []);
 
 	const copyToClipboard = () => {
 		const value = linkToCopy || caption;
@@ -29,11 +37,17 @@ export default function CopyButton({ caption, linkToCopy = '', extraClassName }:
 	return (
 		<button
 			type='button'
-			aria-label={caption}
+			aria-label={`Copy ${caption} to clipboard`}
 			onClick={copyToClipboard}
+			disabled={copied}
 			className={`${styles.copyButton} ${copied ? styles.copied : ''} ${extraClassName ?? ''}`}>
 			<span className={styles.label}>{caption}</span>
 			<FontAwesomeIcon icon={faCopy} />
+			<span
+				className={styles.status}
+				role='status'>
+				{copied ? 'Copied!' : ''}
+			</span>
 		</button>
 	);
 }
