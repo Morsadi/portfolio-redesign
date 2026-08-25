@@ -30,6 +30,7 @@ export default function About({ title, subtitle, description, experiences }: Abo
 					{experiences.map(({ fields: exp, sys }) => (
 						<RevealOnView
 							key={`${sys.id}`}
+							as='li'
 							className={styles.experienceItem}>
 							<div className={styles.experienceGrid}>
 								<div className={styles.timeCol}>
@@ -49,9 +50,7 @@ export default function About({ title, subtitle, description, experiences }: Abo
 									)}
 								</div>
 
-								<div
-									className={styles.bodyCol}
-									aria-label={`Experience at ${exp.company} as ${exp.role}`}>
+								<div className={styles.bodyCol}>
 									<div className={styles.expHeader}>
 										{exp.company && <h3 className={styles.company}>{exp.company}</h3>}
 										{exp.role && (
