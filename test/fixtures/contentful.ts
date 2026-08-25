@@ -1,6 +1,12 @@
-import type { ContentfulEntry, ProjectEntryFields, TagEntryFields } from '@/types/cms/contentful';
+import type { ContentfulAsset, ContentfulEntry, ProjectEntryFields, TagEntryFields } from '@/types/cms/contentful';
 
-type ProjectFixtureOptions = {
+type AssetFixtureOptions = {
+	description?: string;
+	title?: string;
+	url?: string;
+};
+
+type ProjectFixtureOptions = Omit<Partial<ProjectEntryFields>, 'description' | 'slug' | 'tags' | 'title'> & {
 	description?: string;
 	id: string;
 	slug: string;
@@ -13,9 +19,35 @@ export const createTag = (id: string, name: string, slug: string): ContentfulEnt
 	fields: { name, slug },
 });
 
-export const createProject = ({ description = 'A portfolio project.', id, slug, tags, title }: ProjectFixtureOptions): ContentfulEntry<ProjectEntryFields> => ({
+export const createAsset = ({ description = '', title = '', url = '//images.ctfassets.net/example.png' }: AssetFixtureOptions = {}): ContentfulAsset => ({
+	fields: {
+		description,
+		file: {
+			contentType: 'image/png',
+			details: { size: 1 },
+			fileName: 'example.png',
+			url,
+		},
+		title,
+	},
+	metadata: { tags: [] },
+	sys: {
+		contentType: {
+			sys: { id: 'Asset', linkType: 'ContentType', type: 'Link' },
+		},
+		createdAt: '2026-01-01T00:00:00.000Z',
+		id: 'asset-id',
+		locale: 'en-US',
+		type: 'Asset',
+		updatedAt: '2026-01-01T00:00:00.000Z',
+	},
+	toPlainObject: () => ({}),
+});
+
+export const createProject = ({ description = 'A portfolio project.', id, slug, tags, title, ...fields }: ProjectFixtureOptions): ContentfulEntry<ProjectEntryFields> => ({
 	sys: { id },
 	fields: {
+		...fields,
 		description,
 		slug,
 		tags,
