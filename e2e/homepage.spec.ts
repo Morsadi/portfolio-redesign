@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+import { waitForAnimations } from './helpers/waitForAnimations';
+
 test.describe('Homepage', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('/');
@@ -37,6 +39,8 @@ test.describe('Homepage', () => {
 	});
 
 	test('has no automated accessibility violations in the main content', async ({ page }) => {
+		await waitForAnimations(page.getByRole('main', { name: 'Home' }));
+
 		const accessibilityScanResults = await new AxeBuilder({ page }).include('main').analyze();
 
 		expect(accessibilityScanResults.violations).toEqual([]);
