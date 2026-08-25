@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties, useMemo, useRef, useState } from 'react';
+import { type CSSProperties, type KeyboardEvent, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import styles from './styles/projectExplorer.module.css';
@@ -31,6 +31,7 @@ export default function ProjectExplorerClient({ sectionId, projects, tagOptions 
 	const [isOpen, setIsOpen] = useState(false);
 
 	const filterControlsRef = useRef<HTMLDivElement | null>(null);
+	const filterButtonRef = useRef<HTMLButtonElement | null>(null);
 
 	useClickOutside(isOpen, filterControlsRef, () => setIsOpen(false));
 
@@ -66,6 +67,18 @@ export default function ProjectExplorerClient({ sectionId, projects, tagOptions 
 		setIsOpen(false);
 	};
 
+	const closeFiltersAndRestoreFocus = () => {
+		setIsOpen(false);
+		filterButtonRef.current?.focus();
+	};
+
+	const handleFilterControlsKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+		if (event.key === 'Escape' && isOpen) {
+			event.preventDefault();
+			closeFiltersAndRestoreFocus();
+		}
+	};
+
 	const projectTagSlugsById = useMemo(() => {
 		const map = new Map<string, string[]>();
 		for (const project of projects) {
@@ -88,8 +101,10 @@ export default function ProjectExplorerClient({ sectionId, projects, tagOptions 
 			<div className={styles.filter}>
 				<div
 					ref={filterControlsRef}
-					className={styles.filterControls}>
+					className={styles.filterControls}
+					onKeyDown={handleFilterControlsKeyDown}>
 					<button
+						ref={filterButtonRef}
 						type='button'
 						className={styles.dropdownButton}
 						aria-label={selectedCount ? `Filter projects (${selectedCount} selected)` : 'Filter projects'}
@@ -103,52 +118,55 @@ export default function ProjectExplorerClient({ sectionId, projects, tagOptions 
 						/>
 					</button>
 
-					<button
-						type='button'
-						className={`${styles.clearButton} ${selectedCount > 0 ? '' : styles.hidden}`}
-						onClick={clearTagsAndClose}
-						aria-label='Clear all filters'>
-						Clear all filters <span className={styles.clearButtonCount}>({selectedCount})</span>
-					</button>
-					<ul
-						id={`tags-panel-${sectionId}`}
-						aria-hidden={!isOpen}
-						className={`${styles.dropdownPanel} ${isOpen ? styles.open : ''}`}
-						aria-label='Tag filter options'>
-						{tagOptions.map((tag) => {
-							const slug = tag.slug.trim();
-							const name = tag.name.trim();
+					{selectedCount > 0 ? (
+						<button
+							type='button'
+							className={styles.clearButton}
+							onClick={clearTagsAndClose}
+							aria-label='Clear all filters'>
+							Clear all filters <span className={styles.clearButtonCount}>({selectedCount})</span>
+						</button>
+					) : null}
+					{isOpen ? (
+						<ul
+							id={`tags-panel-${sectionId}`}
+							className={`${styles.dropdownPanel} ${styles.open}`}
+							aria-label='Tag filter options'>
+							{tagOptions.map((tag) => {
+								const slug = tag.slug.trim();
+								const name = tag.name.trim();
 
-							if (!slug || !name) return null;
+								if (!slug || !name) return null;
 
-							const inputId = `tag-${sectionId}-${slug}`;
-							const checked = selectedSlugs.has(slug);
+								const inputId = `tag-${sectionId}-${slug}`;
+								const checked = selectedSlugs.has(slug);
 
-							return (
-								<li
-									key={slug}
-									className={styles.option}>
-									<label
-										htmlFor={inputId}
-										className={styles.optionLabel}>
-										<input
-											id={inputId}
-											type='checkbox'
-											className={styles.optionCheckbox}
-											checked={checked}
-											onChange={() => toggleTag(slug)}
-										/>
-										<FontAwesomeIcon
-											icon={faCirclePlus}
-											aria-hidden='true'
-											className={styles.optionIcon}
-										/>
-										<span className={styles.optionText}>{name}</span>
-									</label>
-								</li>
-							);
-						})}
-					</ul>
+								return (
+									<li
+										key={slug}
+										className={styles.option}>
+										<label
+											htmlFor={inputId}
+											className={styles.optionLabel}>
+											<input
+												id={inputId}
+												type='checkbox'
+												className={styles.optionCheckbox}
+												checked={checked}
+												onChange={() => toggleTag(slug)}
+											/>
+											<FontAwesomeIcon
+												icon={faCirclePlus}
+												aria-hidden='true'
+												className={styles.optionIcon}
+											/>
+											<span className={styles.optionText}>{name}</span>
+										</label>
+									</li>
+								);
+							})}
+						</ul>
+					) : null}
 				</div>
 			</div>
 

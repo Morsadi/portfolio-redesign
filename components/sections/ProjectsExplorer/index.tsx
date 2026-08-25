@@ -19,13 +19,11 @@ export default async function ProjectExplorer({ id, title }: ProjectExplorerProp
 			id={`section-${id}`}
 			className={styles.projectsExplorer}
 			aria-labelledby={`section-${id}-title`}>
-			{title ? (
-				<h2
-					id={`section-${id}-title`}
-					className={styles.title}>
-					{title}
-				</h2>
-			) : null}
+			<h2
+				id={`section-${id}-title`}
+				className={title ? styles.title : styles.visuallyHidden}>
+				{title || 'Projects'}
+			</h2>
 
 			<Suspense fallback={<div>Loading...</div>}>
 				<ProjectExplorerClient
