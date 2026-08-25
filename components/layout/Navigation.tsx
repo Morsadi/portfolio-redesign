@@ -33,6 +33,7 @@ export default function Navigation() {
 					key={item.href}
 					href={item.href}
 					className={styles.navLink}
+					aria-current={activeHref === item.href ? 'page' : undefined}
 					data-active={activeHref === item.href ? 'true' : 'false'}>
 					{item.label}
 				</Link>
